@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+.vercel/
+__MACOSX/
+.DS_Store
+healthora/backend/config/serviceAccountKey.json

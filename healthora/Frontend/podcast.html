@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Healthora | Podcast</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="article-page">
+
+        <button
+            class="article-back"
+            onclick="history.back()"
+        >
+            ← Back
+        </button>
+
+
+        <div class="article-page-card">
+
+            <img
+                id="podcast-image"
+                class="article-page-image"
+                src=""
+                alt=""
+            >
+
+
+            <div class="article-page-content">
+
+                <span
+                    id="podcast-category"
+                    class="article-page-category"
+                >
+                    PODCAST
+                </span>
+
+
+                <h1 id="podcast-title"></h1>
+
+
+                <p
+                    id="podcast-host"
+                    class="article-page-time"
+                ></p>
+
+
+                <p
+                    id="podcast-duration"
+                    class="article-page-time"
+                ></p>
+
+
+                <div
+                    id="podcast-content"
+                    class="article-page-body"
+                ></div>
+
+                <video
+    id="podcast-video"
+    controls
+    style="
+        width:100%;
+        max-width:800px;
+        margin-top:20px;
+        border-radius:16px;
+        display:none;
+    "
+>
+</video>
+
+
+                <button
+                    id="podcast-play"
+                    class="primary-button"
+                >
+                    ▶ Play Podcast
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+  <script
+    type="module"
+    src="podcastPage.js">
+</script>
+</body>
+
+</html>

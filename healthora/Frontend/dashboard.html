@@ -1,0 +1,7348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Healthora - Your personalized health and wellness platform."
+    >
+
+    <meta
+        name="theme-color"
+        content="#219653"
+    >
+
+    <title>
+        Healthora | Your Health. Your Story.
+    </title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+      <link rel="stylesheet" href="style.css">
+
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+
+body{
+    font-family:"Inter",Arial,sans-serif;
+    background:#f4faf7;
+    color:#102a2a;
+    min-height:100vh;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+:root{
+    --green:#219653;
+    --dark-green:#157640;
+    --light-green:#e3f5ea;
+    --lighter-green:#f2faf5;
+    --text:#102a2a;
+    --muted:#728080;
+    --border:#dfeae4;
+    --white:#ffffff;
+    --sidebar:235px;
+    --right:320px;
+    --shadow:0 8px 25px rgba(20,70,45,.07);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.top-header{
+    height:76px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    padding:0 22px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.brand{
+    width:var(--sidebar);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+}
+
+.brand-logo{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+}
+
+.brand-name{
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-tagline{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:2px;
+}
+
+.search-wrapper{
+    flex:1;
+    max-width:760px;
+    margin:auto;
+    position:relative;
+}
+
+.search-wrapper span{
+    position:absolute;
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.search-input{
+    width:100%;
+    height:44px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:#f5f9f7;
+    padding:0 18px 0 44px;
+    outline:none;
+    font-size:12px;
+}
+
+.search-input:focus{
+    background:#fff;
+    border-color:var(--green);
+}
+
+.header-right{
+    width:var(--sidebar);
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:16px;
+}
+
+.notification{
+    border:none;
+    background:none;
+    font-size:18px;
+    position:relative;
+}
+
+.notification-dot{
+    position:absolute;
+    right:-2px;
+    top:0;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#e53935;
+}
+
+.user-menu{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.user-avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-weight:700;
+}
+
+.user-name{
+    font-size:11px;
+    font-weight:700;
+}
+
+.user-arrow{
+    font-size:9px;
+    color:var(--muted);
+}
+
+
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard{
+    display:grid;
+    grid-template-columns:
+        var(--sidebar)
+        minmax(0,1fr)
+        var(--right);
+    min-height:calc(100vh - 76px);
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar{
+    background:#fff;
+    border-right:1px solid var(--border);
+    padding:20px 13px;
+    min-height:calc(100vh - 76px);
+    position:sticky;
+    top:76px;
+    height:calc(100vh - 76px);
+    overflow-y:auto;
+}
+
+.sidebar-nav{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.nav-item{
+    width:100%;
+    border:none;
+    background:transparent;
+    border-radius:11px;
+    padding:12px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#465656;
+    font-size:12px;
+    text-align:left;
+    transition:.2s;
+}
+
+.nav-item:hover{
+    background:#edf8f2;
+    color:var(--green);
+}
+
+.nav-item.active{
+    background:#e2f5e9;
+    color:#14703f;
+    font-weight:700;
+}
+
+.nav-icon{
+    width:22px;
+    text-align:center;
+    font-size:16px;
+}
+
+.sidebar-heading{
+    margin:25px 12px 10px;
+    color:#8a9696;
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+.sidebar-interest{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 11px;
+    background:#f8faf9;
+    border-radius:9px;
+    margin-bottom:5px;
+    font-size:10px;
+}
+
+.motivation-card{
+    margin-top:22px;
+    padding:18px;
+    min-height:170px;
+    border-radius:15px;
+    background:linear-gradient(140deg,#dff4e7,#eef9f2);
+}
+
+.motivation-card h3{
+    font-size:14px;
+    line-height:1.45;
+}
+
+.motivation-card p{
+    margin-top:8px;
+    color:#647474;
+    font-size:10px;
+    line-height:1.5;
+}
+
+.motivation-button{
+    margin-top:14px;
+    border:none;
+    background:var(--green);
+    color:#fff;
+    padding:9px 14px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main-content{
+    min-width:0;
+    min-height:calc(100vh - 76px);
+    padding:22px;
+    background:linear-gradient(135deg,#f7fbf9,#f0f8f4);
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.page-title{
+    margin-bottom:20px;
+}
+
+.page-title h1{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.page-title p{
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.5;
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-top:23px;
+    margin-bottom:11px;
+}
+
+.section-header h2{
+    font-size:16px;
+    font-weight:800;
+}
+
+.section-header p{
+    margin-top:4px;
+    color:var(--muted);
+    font-size:9px;
+}
+
+.section-link{
+    color:var(--green);
+    font-size:10px;
+    font-weight:700;
+    text-decoration:none;
+}
+
+.primary-button{
+    border:none;
+    background:var(--green);
+    color:white;
+    padding:11px 19px;
+    border-radius:22px;
+    font-size:11px;
+    font-weight:700;
+}
+
+.primary-button:hover{
+    background:var(--dark-green);
+}
+
+.secondary-button{
+    border:1px solid var(--border);
+    background:#fff;
+    color:#36504a;
+    padding:10px 17px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   HOME HERO
+========================================================= */
+
+.hero{
+    height:275px;
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    background:#e7f6ec;
+}
+
+.hero-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        90deg,
+        rgba(227,246,234,.98) 0%,
+        rgba(227,246,234,.84) 42%,
+        rgba(227,246,234,.08) 100%
+    );
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    padding:31px;
+    max-width:520px;
+}
+
+.hero-greeting{
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:11px;
+}
+
+.hero-content h1{
+    font-size:37px;
+    line-height:1.08;
+    letter-spacing:-1px;
+    margin-bottom:13px;
+}
+
+.hero-content p{
+    max-width:390px;
+    color:#526760;
+    font-size:12px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   INTERESTS
+========================================================= */
+
+.interest-row{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.interest-pill{
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:22px;
+    padding:9px 13px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:10px;
+    color:#425252;
+}
+
+.interest-pill:hover{
+    border-color:var(--green);
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.recommendation-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:13px;
+}
+
+.content-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.content-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+}
+
+.image-container{
+    height:135px;
+    position:relative;
+    overflow:hidden;
+}
+
+.content-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.badge{
+    position:absolute;
+    top:9px;
+    left:9px;
+    padding:5px 8px;
+    border-radius:6px;
+    color:#fff;
+    background:var(--green);
+    font-size:9px;
+    font-weight:700;
+}
+
+.badge.purple{
+    background:#8662d0;
+}
+
+.badge.blue{
+    background:#3288d8;
+}
+
+.content-body{
+    padding:12px;
+}
+
+.content-body h3{
+    min-height:35px;
+    font-size:11px;
+    line-height:1.45;
+}
+
+.card-footer{
+    margin-top:10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:var(--muted);
+    font-size:9px;
+}
+
+.save{
+    border:none;
+    background:none;
+    font-size:16px;
+}
+
+
+/* =========================================================
+   TRENDING
+========================================================= */
+
+.trending-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+}
+
+.trending-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+}
+
+.trending-item img{
+    width:75px;
+    height:55px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.trending-item h3{
+    font-size:10px;
+    line-height:1.4;
+}
+
+.trending-item p{
+    color:var(--muted);
+    font-size:8px;
+    margin-top:4px;
+}
+
+
+/* =========================================================
+   RIGHT PANEL
+========================================================= */
+
+.right-panel{
+    min-height:calc(100vh - 76px);
+    padding:22px 16px;
+    background:#f8fbf9;
+    border-left:1px solid var(--border);
+}
+
+.right-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:14px;
+}
+
+.right-card h2{
+    font-size:14px;
+    font-weight:800;
+}
+
+.right-subtitle{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:4px;
+    line-height:1.5;
+}
+
+.progress-wrapper{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:14px;
+}
+
+.progress-circle{
+    width:105px;
+    height:105px;
+    flex-shrink:0;
+    border-radius:50%;
+    background:conic-gradient(
+        var(--green) 72%,
+        #e3eee8 72%
+    );
+    display:grid;
+    place-items:center;
+}
+
+.progress-inner{
+    width:78px;
+    height:78px;
+    background:#fff;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.progress-inner strong{
+    font-size:21px;
+}
+
+.progress-inner span{
+    color:var(--muted);
+    font-size:7px;
+}
+
+.stats-list{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.stat-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:6px;
+}
+
+.stat-left{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:#566666;
+    font-size:8px;
+}
+
+.stat-icon{
+    width:26px;
+    height:26px;
+    display:grid;
+    place-items:center;
+    background:var(--light-green);
+    border-radius:8px;
+    font-size:12px;
+}
+
+.stat-row strong{
+    font-size:11px;
+}
+
+.quote-banner{
+    padding:16px;
+    border-radius:11px;
+    background:linear-gradient(135deg,#def3e5,#eef9f2);
+    color:#286044;
+    font-size:11px;
+    font-style:italic;
+    line-height:1.5;
+}
+
+.quote-box{
+    margin-top:10px;
+    padding:14px;
+    background:#f5f7fb;
+    border-radius:11px;
+    font-size:10px;
+    line-height:1.6;
+    color:#4d5d5d;
+}
+
+.quote-author{
+    margin-top:7px;
+    color:var(--muted);
+    font-size:8px;
+}
+
+.card-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:11px;
+}
+
+.upcoming-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px;
+    border:1px solid #edf1ef;
+    border-radius:10px;
+    margin-bottom:7px;
+}
+
+.upcoming-icon{
+    width:34px;
+    height:34px;
+    background:var(--light-green);
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+}
+
+.upcoming-info{
+    flex:1;
+}
+
+.upcoming-info strong{
+    display:block;
+    font-size:9px;
+}
+
+.upcoming-info span{
+    display:block;
+    margin-top:3px;
+    color:var(--muted);
+    font-size:8px;
+}
+
+.check-circle{
+    width:17px;
+    height:17px;
+    border:1px solid #bdcbc3;
+    border-radius:50%;
+}
+
+.podcast{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.podcast img{
+    width:73px;
+    height:78px;
+    object-fit:cover;
+    border-radius:9px;
+}
+
+.podcast-info{
+    flex:1;
+}
+
+.podcast-info h3{
+    font-size:10px;
+}
+
+.podcast-info p{
+    color:var(--muted);
+    font-size:8px;
+    margin-top:4px;
+}
+
+.podcast-bottom{
+    margin-top:10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.play-button{
+    width:34px;
+    height:34px;
+    border:none;
+    border-radius:50%;
+    background:var(--green);
+    color:white;
+}
+
+
+/* =========================================================
+   EXPLORE PAGE
+========================================================= */
+
+.explore-categories{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+}
+
+.category-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:15px 8px;
+    text-align:center;
+    transition:.2s;
+}
+
+.category-card:hover{
+    transform:translateY(-3px);
+    border-color:var(--green);
+}
+
+.category-icon{
+    width:45px;
+    height:45px;
+    margin:auto;
+    display:grid;
+    place-items:center;
+    background:var(--light-green);
+    border-radius:12px;
+    font-size:22px;
+}
+
+.category-card h3{
+    font-size:10px;
+    margin-top:8px;
+}
+
+.featured{
+    height:275px;
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    margin-top:20px;
+}
+
+.featured img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.featured-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    padding:30px;
+    color:#fff;
+    background:linear-gradient(
+        90deg,
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.05)
+    );
+}
+
+.featured-overlay h2{
+    max-width:390px;
+    font-size:32px;
+    line-height:1.15;
+    margin:8px 0;
+}
+
+.explore-small-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+}
+
+
+/* =========================================================
+   ARTICLE PAGE
+========================================================= */
+
+.filter-row{
+    display:flex;
+    gap:8px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+.filter-button{
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:20px;
+    padding:8px 14px;
+    font-size:10px;
+}
+
+.filter-button.active{
+    background:var(--green);
+    color:#fff;
+    border-color:var(--green);
+}
+
+.article-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.article-horizontal{
+    display:flex;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
+    min-height:155px;
+}
+
+.article-horizontal img{
+    width:180px;
+    object-fit:cover;
+}
+
+.article-info{
+    padding:15px;
+    flex:1;
+}
+
+.article-info .category{
+    color:var(--green);
+    font-size:9px;
+    font-weight:700;
+}
+
+.article-info h3{
+    font-size:14px;
+    line-height:1.35;
+    margin:7px 0;
+}
+
+.article-info p{
+    color:var(--muted);
+    font-size:9px;
+    line-height:1.5;
+}
+
+.article-meta{
+    display:flex;
+    gap:12px;
+    margin-top:12px;
+    color:var(--muted);
+    font-size:8px;
+}
+
+
+/* =========================================================
+   PODCAST PAGE
+========================================================= */
+
+.podcast-feature{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:25px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:20px;
+}
+
+.podcast-cover{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    border-radius:16px;
+}
+
+.podcast-feature-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.podcast-label{
+    color:var(--green);
+    font-size:10px;
+    font-weight:700;
+}
+
+.podcast-feature-info h2{
+    font-size:29px;
+    line-height:1.2;
+    margin:9px 0;
+}
+
+.podcast-feature-info p{
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.6;
+}
+
+.player{
+    margin-top:25px;
+    padding:18px;
+    background:#f7faf8;
+    border-radius:15px;
+}
+
+.player-time{
+    display:flex;
+    justify-content:space-between;
+    color:var(--muted);
+    font-size:9px;
+}
+
+.player-line{
+    height:6px;
+    background:#dce9e1;
+    border-radius:10px;
+    margin:12px 0 18px;
+}
+
+.player-progress{
+    width:43%;
+    height:100%;
+    background:var(--green);
+    border-radius:10px;
+}
+
+.player-controls{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:25px;
+}
+
+.player-controls button{
+    border:none;
+    background:none;
+    font-size:11px;
+}
+
+.big-play{
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    font-size:18px;
+}
+
+.podcast-library{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.podcast-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:12px;
+}
+
+.podcast-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:11px;
+}
+
+.podcast-card h3{
+    font-size:12px;
+    margin-top:10px;
+}
+
+.podcast-card p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:4px;
+}
+
+
+/* =========================================================
+   VIDEO PAGE
+========================================================= */
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.video-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.video-thumbnail{
+    height:180px;
+    position:relative;
+}
+
+.video-thumbnail img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.video-play{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.9);
+    color:var(--green);
+    font-size:18px;
+}
+
+.video-info{
+    padding:13px;
+}
+
+.video-info h3{
+    font-size:12px;
+    line-height:1.4;
+}
+
+.video-info p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:5px;
+}
+
+
+/* =========================================================
+   SAVED PAGE
+========================================================= */
+
+.saved-layout{
+    display:grid;
+    grid-template-columns:1fr 280px;
+    gap:16px;
+}
+
+.saved-main{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.saved-item{
+    display:flex;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.saved-item img{
+    width:175px;
+    height:130px;
+    object-fit:cover;
+}
+
+.saved-item-content{
+    padding:15px;
+    flex:1;
+}
+
+.saved-item-content .category{
+    color:var(--green);
+    font-size:9px;
+    font-weight:700;
+}
+
+.saved-item-content h3{
+    font-size:14px;
+    margin:7px 0;
+}
+
+.saved-item-content p{
+    color:var(--muted);
+    font-size:9px;
+    line-height:1.5;
+}
+
+.saved-sidebar{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:17px;
+    height:max-content;
+}
+
+.saved-sidebar h3{
+    font-size:13px;
+    margin-bottom:13px;
+}
+
+.saved-folder{
+    padding:12px;
+    border-radius:10px;
+    background:#f5faf7;
+    margin-bottom:8px;
+    font-size:10px;
+    display:flex;
+    justify-content:space-between;
+}
+
+
+/* =========================================================
+   COLLECTIONS
+========================================================= */
+
+.collections-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.collection-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.collection-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+}
+
+.collection-top{
+    display:flex;
+    justify-content:space-between;
+}
+
+.collection-icon{
+    width:58px;
+    height:58px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    background:var(--light-green);
+    font-size:26px;
+}
+
+.collection-card h3{
+    font-size:14px;
+    margin-top:13px;
+}
+
+.collection-card p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:5px;
+}
+
+.collection-progress{
+    height:5px;
+    background:#e7eee9;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.collection-progress span{
+    display:block;
+    height:100%;
+    background:var(--green);
+    border-radius:10px;
+}
+
+.collection-preview{
+    display:flex;
+    margin-top:15px;
+}
+
+.collection-preview img{
+    width:42px;
+    height:42px;
+    object-fit:cover;
+    border-radius:8px;
+    border:3px solid #fff;
+    margin-right:-7px;
+}
+
+
+/* =========================================================
+   CREATOR DASHBOARD
+========================================================= */
+
+.creator-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.creator-select{
+    padding:9px 13px;
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:9px;
+    font-size:9px;
+}
+
+.creator-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.creator-stat{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:17px;
+}
+
+.creator-stat span{
+    color:var(--muted);
+    font-size:9px;
+}
+
+.creator-stat h2{
+    font-size:23px;
+    margin:8px 0;
+}
+
+.creator-stat small{
+    color:var(--green);
+    font-size:9px;
+}
+
+.analytics-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:15px;
+    margin-top:15px;
+}
+
+.chart-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:20px;
+}
+
+.chart-box h2{
+    font-size:14px;
+}
+
+.chart-box p{
+    color:var(--muted);
+    font-size:9px;
+    margin-top:5px;
+}
+
+.chart{
+    height:260px;
+    margin-top:20px;
+    border-left:1px solid #dce7e1;
+    border-bottom:1px solid #dce7e1;
+    background:repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 50px,
+        #edf2ef 51px
+    );
+    position:relative;
+}
+
+.chart-line{
+    position:absolute;
+    left:4%;
+    right:3%;
+    top:48%;
+    height:3px;
+    background:var(--green);
+    border-radius:10px;
+    transform:rotate(-5deg);
+}
+
+.top-content{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:18px;
+}
+
+.top-content h2{
+    font-size:14px;
+    margin-bottom:12px;
+}
+
+.performance-item{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:10px 0;
+    border-bottom:1px solid #edf2ef;
+}
+
+.performance-item:last-child{
+    border-bottom:none;
+}
+
+.performance-item img{
+    width:48px;
+    height:40px;
+    object-fit:cover;
+    border-radius:7px;
+}
+
+.performance-info{
+    flex:1;
+}
+
+.performance-info h3{
+    font-size:9px;
+}
+
+.performance-info p{
+    color:var(--muted);
+    font-size:7px;
+    margin-top:3px;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-cover{
+    height:220px;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    background:linear-gradient(135deg,#dff3e6,#f4faf6);
+}
+
+.profile-cover-content{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:90px;
+    opacity:.15;
+}
+
+.profile-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:17px;
+    margin:-45px 25px 0;
+    position:relative;
+}
+
+.profile-avatar-large{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-size:30px;
+    font-weight:700;
+    border:5px solid #fff;
+}
+
+.profile-info{
+    flex:1;
+}
+
+.profile-info h1{
+    font-size:22px;
+}
+
+.profile-info p{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:4px;
+}
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:20px;
+}
+
+.profile-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:18px;
+}
+
+.profile-box h2{
+    font-size:14px;
+    margin-bottom:13px;
+}
+
+.activity{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:11px 0;
+    border-bottom:1px solid #edf2ef;
+}
+
+.activity:last-child{
+    border-bottom:none;
+}
+
+.activity-icon{
+    width:36px;
+    height:36px;
+    display:grid;
+    place-items:center;
+    border-radius:9px;
+    background:var(--light-green);
+}
+
+.activity-info{
+    flex:1;
+}
+
+.activity-info strong{
+    display:block;
+    font-size:9px;
+}
+
+.activity-info span{
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+    margin-top:3px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+.mobile-nav{
+    display:none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1250px){
+
+    :root{
+        --sidebar:210px;
+        --right:280px;
+    }
+
+    .brand{
+        width:210px;
+    }
+
+    .header-right{
+        width:210px;
+    }
+
+    .recommendation-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .explore-categories{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+
+@media(max-width:950px){
+
+    .dashboard{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .right-panel{
+        display:none;
+    }
+
+    .brand{
+        width:auto;
+    }
+
+    .header-right{
+        width:auto;
+    }
+
+    .user-name,
+    .user-arrow{
+        display:none;
+    }
+
+    .top-header{
+        gap:15px;
+    }
+
+    .mobile-nav{
+        position:fixed;
+        left:0;
+        right:0;
+        bottom:0;
+        height:65px;
+        background:#fff;
+        border-top:1px solid var(--border);
+        display:flex;
+        justify-content:space-around;
+        align-items:center;
+        z-index:9999;
+    }
+
+    .mobile-nav button{
+        border:none;
+        background:none;
+        color:var(--muted);
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:4px;
+        font-size:9px;
+    }
+
+    .mobile-nav button.active{
+        color:var(--green);
+        font-weight:700;
+    }
+
+    body{
+        padding-bottom:65px;
+    }
+
+    .podcast-feature{
+        grid-template-columns:240px 1fr;
+    }
+
+    .analytics-grid{
+        grid-template-columns:1fr;
+    }
+
+    .saved-layout{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+@media(max-width:650px){
+
+    .top-header{
+        height:65px;
+        padding:0 10px;
+    }
+
+    .brand-logo{
+        width:35px;
+        height:35px;
+    }
+
+    .brand-name{
+        font-size:15px;
+    }
+
+    .brand-tagline{
+        display:none;
+    }
+
+    .notification{
+        display:none;
+    }
+
+    .search-input{
+        height:37px;
+        font-size:9px;
+    }
+
+    .main-content{
+        padding:14px;
+    }
+
+    .hero{
+        height:330px;
+    }
+
+    .hero-content{
+        padding:23px;
+    }
+
+    .hero-content h1{
+        font-size:29px;
+    }
+
+    .recommendation-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .trending-grid{
+        grid-template-columns:1fr;
+    }
+
+    .explore-categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .article-list{
+        grid-template-columns:1fr;
+    }
+
+    .article-horizontal img{
+        width:125px;
+    }
+
+    .podcast-feature{
+        grid-template-columns:1fr;
+    }
+
+    .podcast-cover{
+        height:280px;
+    }
+
+    .podcast-library{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .video-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .collection-grid{
+        grid-template-columns:1fr;
+    }
+
+    .creator-stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .profile-card{
+        flex-direction:column;
+        text-align:center;
+        margin-left:10px;
+        margin-right:10px;
+    }
+
+    .profile-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL
+========================================================= */
+
+@media(max-width:450px){
+
+    .recommendation-grid{
+        grid-template-columns:1fr;
+    }
+
+    .podcast-library{
+        grid-template-columns:1fr;
+    }
+
+    .video-grid{
+        grid-template-columns:1fr;
+    }
+
+    .creator-stats{
+        grid-template-columns:1fr;
+    }
+
+    .saved-item{
+        flex-direction:column;
+    }
+
+    .saved-item img{
+        width:100%;
+        height:170px;
+    }
+
+}
+
+/* HEALTHORA AI — FINAL LAYOUT FIX */
+
+#healthora-ai-widget .healthora-ai-messages {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    text-align: left !important;
+}
+
+#healthora-ai-widget .healthora-ai-message {
+    display: flex !important;
+    width: 100% !important;
+    text-align: left !important;
+}
+
+#healthora-ai-widget .healthora-ai-message.assistant {
+    justify-content: flex-start !important;
+}
+
+#healthora-ai-widget .healthora-ai-message .healthora-ai-bubble {
+    display: block !important;
+    width: fit-content !important;
+    max-width: 88% !important;
+    text-align: left !important;
+    text-align-last: left !important;
+    word-spacing: normal !important;
+    overflow-wrap: anywhere !important;
+    white-space: pre-wrap !important;
+    line-height: 1.65 !important;
+}
+
+/* Hide floating button while chat is open */
+#healthora-ai-widget:has(.healthora-ai-panel.is-open)
+#healthora-ai-toggle {
+    display: none !important;
+}
+
+@media (max-width: 480px) {
+    #healthora-ai-widget .healthora-ai-panel {
+        width: calc(100vw - 24px) !important;
+        max-width: calc(100vw - 24px) !important;
+    }
+}
+
+/* Healthora saved avatar */
+.user-avatar.has-wellness-avatar,
+.profile-avatar-large.has-wellness-avatar {
+    padding: 0;
+    overflow: hidden;
+    background: #e8f6ed;
+    position: relative;
+}
+
+.healthora-avatar-art {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    background:
+        radial-gradient(circle at 30% 20%, #ffffff 0%, transparent 42%),
+        linear-gradient(145deg, #d8f3e1, #edf8f0);
+}
+
+.healthora-avatar-body {
+    position: absolute;
+    bottom: -9%;
+    left: 12%;
+    width: 76%;
+    height: 52%;
+    background: var(--avatar-outfit);
+    border-radius: 48% 48% 0 0;
+    box-shadow: inset 0 4px 0 #ffffff45;
+}
+
+.healthora-avatar-face {
+    position: absolute;
+    top: 24%;
+    left: 27%;
+    width: 46%;
+    height: 53%;
+    border-radius: 46% 46% 43% 43%;
+    background: var(--avatar-skin);
+    box-shadow: inset 0 -3px 0 #00000008;
+}
+
+.healthora-avatar-hair {
+    position: absolute;
+    z-index: 2;
+    top: -8%;
+    left: -3%;
+    width: 106%;
+    height: 35%;
+    border-radius: 55% 55% 35% 30%;
+    background: var(--avatar-hair);
+    box-shadow: 0 4px 0 -1px var(--avatar-hair);
+}
+
+.healthora-avatar-eye {
+    position: absolute;
+    top: 48%;
+    width: 7%;
+    height: 9%;
+    border-radius: 50%;
+    background: #49352c;
+}
+
+.healthora-avatar-eye.left {
+    left: 27%;
+}
+
+.healthora-avatar-eye.right {
+    right: 27%;
+}
+
+.healthora-avatar-smile {
+    position: absolute;
+    top: 68%;
+    left: 39%;
+    width: 22%;
+    height: 9%;
+    border-bottom: 2px solid #9d514b;
+    border-radius: 0 0 50% 50%;
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================================
+     HEADER
+========================================================= -->
+
+<header class="top-header">
+
+
+    <div class="brand">
+
+        <img
+            src="src/assets/logo.png"
+            alt="Healthora"
+            class="brand-logo"
+        >
+
+        <div>
+
+            <div class="brand-name">
+                Healthora
+            </div>
+
+            <div class="brand-tagline">
+                Your Health. Your Story.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="search-wrapper">
+
+        <span>
+            🔍
+        </span>
+
+        <input
+            type="text"
+            class="search-input"
+            placeholder="Search articles, podcasts, topics..."
+        >
+
+    </div>
+
+
+    <div class="header-right">
+        
+
+      <button
+    class="notification"
+    id="notification-btn"
+>
+
+            🔔
+
+            <span class="notification-dot"></span>
+
+        </button>
+
+        <!-- NOTIFICATION PANEL -->
+
+<div
+    class="notification-panel"
+    id="notification-panel"
+>
+
+    <div class="notification-header">
+
+        <div>
+            <h3>Notifications</h3>
+
+            <span id="notification-count">
+                0 unread
+            </span>
+        </div>
+
+        <button
+            type="button"
+            id="mark-all-read"
+        >
+            Mark all read
+        </button>
+
+    </div>
+
+
+    <div
+        class="notification-list"
+        id="notification-list"
+    >
+
+        <div class="empty-notifications">
+            🔔
+            <p>No notifications yet</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+        <div class="user-menu">
+
+            <div class="user-avatar" id="header-avatar">
+    S
+</div>
+
+<span class="user-name" id="header-user-name">
+    Hi, Sagar
+</span>
+
+            <span class="user-arrow">
+                ▼
+            </span>
+
+        </div>
+
+    </div>
+
+
+</header>
+
+<div id="search-results" class="search-results">
+
+    <div class="search-results-header">
+
+      
+
+        <p id="search-result-count"></p>
+
+    </div>
+
+    <div id="search-results-list"></div>
+
+</div>
+
+
+
+
+<!-- ========================================================
+     DASHBOARD
+========================================================= -->
+
+<div class="dashboard">
+
+
+<!-- ========================================================
+     LEFT SIDEBAR
+========================================================= -->
+
+<aside class="sidebar">
+
+
+    <nav class="sidebar-nav">
+
+
+        <button
+            class="nav-item active"
+            data-page="home"
+        >
+            <span class="nav-icon">🏠</span>
+            Home
+        </button>
+
+        <button class="nav-item" data-page="wellness">
+    <span class="nav-icon">🌿</span>
+    Wellness Tracker
+</button>
+
+<button class="nav-item" data-page="habitstreaks">
+    <span class="nav-icon">🔥</span>
+    Habit Streaks
+</button>
+
+<button class="nav-item" data-page="wellnessreports">
+    <span class="nav-icon">📊</span>
+    Wellness Reports
+</button>
+
+<button class="nav-item" data-page="smartinsights">
+  <span>🧠</span>
+  <span>Smart Insights</span>
+</button>
+
+<button class="nav-item" data-page="futureself">
+    <span class="nav-icon">🔮</span>
+    FutureSelf
+</button>
+
+
+        <button
+            class="nav-item"
+            data-page="explore"
+        >
+            <span class="nav-icon">◉</span>
+            Explore
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="articles"
+        >
+            <span class="nav-icon">📄</span>
+            Articles
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="podcasts"
+        >
+            <span class="nav-icon">🎧</span>
+            Podcasts
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="videos"
+        >
+            <span class="nav-icon">▶</span>
+            Videos
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="saved"
+        >
+            <span class="nav-icon">🔖</span>
+            Saved
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="collections"
+        >
+            <span class="nav-icon">📁</span>
+            Collections
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="creator"
+        >
+            <span class="nav-icon">👥</span>
+            Creator Hub
+        </button>
+
+
+        <button
+            class="nav-item"
+            data-page="profile"
+        >
+            <span class="nav-icon">👤</span>
+            Profile
+        </button>
+
+
+    </nav>
+
+
+    <div class="sidebar-heading">
+        Your Interests
+    </div>
+
+
+    <button class="interest-pill recommendation-interest">
+    🏋️ Fitness
+</button>
+
+<button class="interest-pill recommendation-interest">
+    🍎 Nutrition
+</button>
+
+<button class="interest-pill recommendation-interest">
+    🧠 Mental Health
+</button>
+
+<button class="interest-pill recommendation-interest">
+    🪷 Yoga
+</button>
+
+<button class="interest-pill recommendation-interest">
+    🌿 Wellness
+</button>
+
+
+   <button
+    class="nav-item"
+    id="edit-interests-btn"
+>
+        <span class="nav-icon">
+            ✎
+        </span>
+
+        Edit Interests
+
+    </button>
+
+
+    <div class="motivation-card">
+
+        <h3>
+            Small steps every day
+            lead to big changes.
+        </h3>
+
+        <p>
+            Keep moving forward on
+            your health journey.
+        </p>
+
+        <button class="motivation-button">
+            Keep Going →
+        </button>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- ========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main class="main-content">
+
+
+<!-- ========================================================
+     HOME PAGE
+========================================================= -->
+
+<section
+    id="home"
+    class="page active"
+>
+
+
+    <div class="hero">
+
+        <img
+            src="src/assets/hero-health.png"
+            alt="Healthora wellness"
+            class="hero-image"
+        >
+
+        <div class="hero-overlay"></div>
+
+
+        <div class="hero-content">
+
+           <div
+    class="hero-greeting"
+    id="home-greeting"
+>
+    Good Evening, Sagar 👋
+</div>
+
+            <h1>
+                A Healthier You
+                <br>
+                Starts Today.
+            </h1>
+
+            <p>
+                Discover. Learn. Grow.
+                With a community that cares
+                about your well-being.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="openPage('explore')"
+            >
+                Explore Now →
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Your Interests
+            </h2>
+
+            <p>
+                Content personalized for you
+            </p>
+
+        </div>
+
+     <a
+    href="#"
+    class="section-link"
+    id="home-manage-interests"
+    onclick="openPage('profile'); return false;"
+>
+    Manage
+</a>
+    </div>
+
+
+ <div class="interest-row">
+
+    <button class="interest-pill">
+        🏋️ Fitness
+    </button>
+
+    <button class="interest-pill">
+        🍎 Nutrition
+    </button>
+
+    <button class="interest-pill">
+        🧠 Mental Health
+    </button>
+
+    <button class="interest-pill">
+        🪷 Yoga
+    </button>
+
+    <button class="interest-pill">
+        🌿 Wellness
+    </button>
+
+<button
+    class="interest-pill"
+    id="home-add-interest"
+>
+    + Add
+</button>
+</div>
+
+
+<!-- Daily Wellness Tip -->
+<section class="daily-tip-card" id="dailyTipCard">
+  <div class="daily-tip-icon">🌿</div>
+
+  <div class="daily-tip-content">
+    <span class="daily-tip-label">YOUR DAILY WELLNESS TIP</span>
+    <h2 id="dailyTipTitle">Stay Hydrated</h2>
+    <p id="dailyTipText">
+      Drink water regularly throughout the day
+      to support your overall well-being.
+    </p>
+    <span class="daily-tip-category" id="dailyTipCategory">
+      💧 Hydration
+    </span>
+  </div>
+
+  <button type="button" id="nextHealthTip" class="daily-tip-button">
+    Next Tip →
+  </button>
+</section>
+
+<!-- Daily Wellness Challenge -->
+<section class="wellness-challenge" id="wellnessChallenge">
+  <div class="challenge-heading">
+    <span class="challenge-icon">🏆</span>
+    <div>
+      <h2>Today's Wellness Challenge</h2>
+      <p>Small actions, healthier habits</p>
+    </div>
+  </div>
+
+  <div class="challenge-content">
+    <span id="challengeEmoji">💧</span>
+    <div>
+      <h3 id="challengeTitle">Stay Hydrated</h3>
+      <p id="challengeDescription">
+        Remember to drink water regularly throughout the day.
+      </p>
+    </div>
+  </div>
+
+  <div class="challenge-progress">
+    <div class="challenge-progress-track">
+      <div id="challengeProgressBar"></div>
+    </div>
+    <span id="challengeProgressText">0% completed</span>
+  </div>
+
+  <button type="button" id="completeChallengeBtn">
+    ✓ Complete Today's Challenge
+  </button>
+
+  <p id="challengeStatus" aria-live="polite"></p>
+</section>
+
+
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Recommended For You
+            </h2>
+
+           <p id="recommendation-subtitle">
+    Based on your interests and activity
+</p>
+
+        </div>
+
+        <a
+    class="section-link"
+    id="recommendation-see-all"
+>
+    See All →
+</a>
+
+    </div>
+
+
+    <div class="recommendation-grid">
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/fitness.png"
+                    class="content-image"
+                    alt="Fitness"
+                >
+
+                <span class="badge">
+                    Article
+                </span>
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    10 Best Exercises
+                    for Beginners
+                </h3>
+
+                <div class="card-footer">
+
+                    <span>
+                        ◷ 8 min read
+                    </span>
+
+                    <button class="save">
+                        ♧
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/podcast.png"
+                    class="content-image"
+                    alt="Podcast"
+                >
+
+                <span class="badge purple">
+                    Podcast
+                </span>
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    The Science of a
+                    Healthy Mindset
+                </h3>
+
+                <div class="card-footer">
+
+                    <span>
+                        ◷ 32 min
+                    </span>
+
+                    <button class="save">
+                        ♧
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/nutrition.png"
+                    class="content-image"
+                    alt="Nutrition"
+                >
+
+                <span class="badge blue">
+                    Video
+                </span>
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    How to Build a
+                    Balanced Diet
+                </h3>
+
+                <div class="card-footer">
+
+                    <span>
+                        ◷ 12 min
+                    </span>
+
+                    <button class="save">
+                        ♧
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/meditation.png"
+                    class="content-image"
+                    alt="Meditation"
+                >
+
+                <span class="badge">
+                    Article
+                </span>
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    A Beginner's Guide
+                    to Meditation
+                </h3>
+
+                <div class="card-footer">
+
+                    <span>
+                        ◷ 6 min read
+                    </span>
+
+                    <button class="save">
+                        ♧
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+
+    <div class="section-header">
+
+        <div>
+            <!-- CONTINUE WHERE YOU LEFT OFF -->
+
+<div class="section-header">
+
+    <div>
+        <h2>
+            Continue Where You Left Off
+        </h2>
+
+        <p>
+            Pick up where you stopped reading
+        </p>
+    </div>
+
+</div>
+
+
+<div
+    class="recommendation-grid"
+    id="continue-reading-grid"
+>
+</div>
+
+            <h2>
+                🔥 Trending in Your Interests
+            </h2>
+
+            <p>
+                Most popular content this week
+            </p>
+
+        </div>
+
+       <a
+    href="#"
+    class="section-link"
+    id="trending-see-all"
+>
+    See All →
+</a>
+
+    </div>
+
+
+    <div class="trending-grid">
+
+
+        <article
+    class="trending-item recently-viewable"
+    data-title="5 Morning Exercises for Energy"
+    data-image="src/assets/fitness.png"
+    data-category="Fitness"
+>
+
+            <img
+                src="src/assets/fitness.png"
+                alt="Morning exercise"
+            >
+
+            <div>
+
+                <h3>
+                    5 Morning Exercises
+                    for Energy
+                </h3>
+
+                <p>
+                    Fitness · 5 min read
+                </p>
+
+            </div>
+
+        </article>
+
+
+       <article
+    class="trending-item recently-viewable"
+    data-title="How to Manage Stress Naturally"
+    data-image="src/assets/meditation.png"
+    data-category="Mental Health"
+>
+
+            <img
+                src="src/assets/meditation.png"
+                alt="Stress"
+            >
+
+            <div>
+
+                <h3>
+                    How to Manage
+                    Stress Naturally
+                </h3>
+
+                <p>
+                    Mental Health · 7 min read
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article
+    class="trending-item recently-viewable"
+    data-title="Healthy Breakfast Ideas"
+    data-image="src/assets/nutrition.png"
+    data-category="Nutrition"
+>
+
+            <img
+                src="src/assets/nutrition.png"
+                alt="Breakfast"
+            >
+
+            <div>
+
+                <h3>
+                    Healthy Breakfast Ideas
+                </h3>
+
+                <p>
+                    Nutrition · 6 min read
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article
+    class="trending-item recently-viewable"
+    data-title="Better Sleep, Better You"
+    data-image="src/assets/wellness.png"
+    data-category="Wellness"
+>
+
+            <img
+                src="src/assets/wellness.png"
+                alt="Sleep"
+            >
+
+            <div>
+
+                <h3>
+                    Better Sleep,
+                    Better You
+                </h3>
+
+                <p>
+                    Wellness · 5 min read
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Because You Read...
+            </h2>
+
+            <p>
+                More content based on your recent activity
+            </p>
+
+        </div>
+
+        <a
+    href="#"
+    class="section-link"
+    id="because-see-all"
+>
+    See All →
+</a>
+
+    </div>
+
+
+    <div class="recommendation-grid">
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/fitness.png"
+                    class="content-image"
+                    alt="Morning routine"
+                >
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    Build a Stronger
+                    Morning Routine
+                </h3>
+
+                <div class="card-footer">
+                    ◷ 7 min read
+                    <button class="save">♧</button>
+                </div>
+
+            </div>
+
+        </article>
+
+
+       <article
+    class="content-card recently-viewable"
+    data-title="Build a Stronger Morning Routine"
+    data-image="src/assets/fitness.png"
+    data-category="Fitness"
+>
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/wellness.png"
+                    class="content-image"
+                    alt="Sleep"
+                >
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    Better Sleep,
+                    Better You
+                </h3>
+
+                <div class="card-footer">
+                    ◷ 18 min
+                    <button class="save">♧</button>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article
+    class="content-card recently-viewable"
+    data-title="Better Sleep, Better You"
+    data-image="src/assets/wellness.png"
+    data-category="Wellness"
+>
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/nutrition.png"
+                    class="content-image"
+                    alt="Healthy food"
+                >
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    Healthy Foods
+                    You Should Try
+                </h3>
+
+                <div class="card-footer">
+                    ◷ 12 min
+                    <button class="save">♧</button>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article
+    class="content-card recently-viewable"
+    data-title="Healthy Foods You Should Try"
+    data-image="src/assets/nutrition.png"
+    data-category="Nutrition"
+>
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/Yoga.png"
+                    class="content-image"
+                    alt="Yoga"
+                >
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    Simple Yoga
+                    for Every Morning
+                </h3>
+
+                <div class="card-footer">
+                    ◷ 9 min
+                    <button class="save">♧</button>
+                </div>
+
+            </div>
+
+        </article>
+
+        <article
+    class="content-card recently-viewable"
+    data-title="Simple Yoga for Every Morning"
+    data-image="src/assets/Yoga.png"
+    data-category="Yoga"
+>
+
+
+    </div>
+
+
+    <!-- =====================================================
+     RECENTLY VIEWED
+====================================================== -->
+
+<div class="section-header">
+
+    <div>
+
+        <h2>
+            Recently Viewed
+        </h2>
+
+        <p>
+            Content you viewed recently
+        </p>
+
+    </div>
+
+</div>
+
+
+<div
+    class="recommendation-grid"
+    id="recently-viewed-grid"
+>
+
+</div>
+
+</section>
+
+
+
+<!-- ========================================================
+     EXPLORE PAGE
+========================================================= -->
+<!-- DAILY WELLNESS TRACKER -->
+<section id="wellness" class="page">
+
+    <div class="page-title">
+        <h1>Daily Wellness Tracker 🌿</h1>
+        <p>Small daily habits, healthier you.</p>
+    </div>
+
+    <div class="wellness-summary-grid">
+
+        <div class="wellness-stat-card">
+            <span>💧</span>
+            <p>Water Today</p>
+            <h2 id="wellness-water-summary">0 ml</h2>
+        </div>
+
+        <div class="wellness-stat-card">
+            <span>😴</span>
+            <p>Sleep Last Night</p>
+            <h2 id="wellness-sleep-summary">0 hrs</h2>
+        </div>
+
+        <div class="wellness-stat-card">
+            <span>🏃</span>
+            <p>Activity Today</p>
+            <h2 id="wellness-activity-summary">0 min</h2>
+        </div>
+
+        <div class="wellness-stat-card">
+            <span>⭐</span>
+            <p>Daily Completion</p>
+            <h2 id="wellness-score-summary">0%</h2>
+        </div>
+
+    </div>
+
+    <div class="wellness-layout">
+
+        <!-- WATER TRACKER -->
+        <div class="wellness-card">
+            <h2>💧 Water Intake</h2>
+            <p>Track the water you drink today.</p>
+
+            <div class="wellness-progress-track">
+                <div id="water-progress-bar"
+                     class="wellness-progress-fill"></div>
+            </div>
+
+            <p id="water-progress-text">0 / 2000 ml</p>
+
+            <div class="wellness-button-row">
+                <button type="button"
+                        class="wellness-action-button"
+                        data-water="250">+250 ml</button>
+
+                <button type="button"
+                        class="wellness-action-button"
+                        data-water="500">+500 ml</button>
+
+                <button type="button"
+                        class="wellness-action-button"
+                        id="water-reset">Reset</button>
+            </div>
+        </div>
+
+        <!-- SLEEP TRACKER -->
+        <div class="wellness-card">
+            <h2>😴 Sleep Tracker</h2>
+            <p>Record your sleep from last night.</p>
+
+            <label for="wellness-sleep-hours">
+                Sleep duration (hours)
+            </label>
+
+            <input id="wellness-sleep-hours"
+                   type="number"
+                   min="0"
+                   max="24"
+                   step="0.5"
+                   placeholder="e.g. 7.5">
+
+            <button type="button"
+                    id="wellness-save-sleep"
+                    class="wellness-primary-button">
+                Save Sleep
+            </button>
+        </div>
+
+        <!-- MOOD TRACKER -->
+        <div class="wellness-card">
+            <h2>😊 How are you feeling?</h2>
+            <p>Choose the mood that describes you today.</p>
+
+            <div class="wellness-mood-options">
+                <button type="button" data-mood="Great">😄<span>Great</span></button>
+                <button type="button" data-mood="Good">🙂<span>Good</span></button>
+                <button type="button" data-mood="Okay">😐<span>Okay</span></button>
+                <button type="button" data-mood="Low">😔<span>Low</span></button>
+            </div>
+
+            <p id="wellness-mood-status">No mood selected yet.</p>
+        </div>
+
+        <!-- ACTIVITY TRACKER -->
+        <div class="wellness-card">
+            <h2>🏃 Daily Activity</h2>
+            <p>Log your movement for today.</p>
+
+            <label for="wellness-activity-type">
+                Activity
+            </label>
+
+            <select id="wellness-activity-type">
+                <option value="Walking">Walking</option>
+                <option value="Running">Running</option>
+                <option value="Gym">Gym / Workout</option>
+                <option value="Yoga">Yoga</option>
+                <option value="Cycling">Cycling</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="wellness-activity-minutes">
+                Duration (minutes)
+            </label>
+
+            <input id="wellness-activity-minutes"
+                   type="number"
+                   min="1"
+                   max="1440"
+                   placeholder="e.g. 30">
+
+            <button type="button"
+                    id="wellness-save-activity"
+                    class="wellness-primary-button">
+                Add Activity
+            </button>
+
+            <div id="wellness-activity-list"></div>
+        </div>
+
+    </div>
+
+    <!-- WEEKLY PROGRESS -->
+    <div class="wellness-card wellness-history-card">
+        <h2>📊 Your Weekly Progress</h2>
+        <p>Your saved daily wellness records.</p>
+
+        <div id="wellness-weekly-progress"></div>
+    </div>
+
+    <p id="wellness-save-status"
+       class="wellness-save-status"
+       role="status"
+       aria-live="polite"></p>
+
+</section>
+
+<!-- SMART HABIT STREAKS -->
+<section id="habitstreaks" class="page">
+    <div class="page-header">
+        <div>
+            <h1>Smart Habit Streaks 🔥</h1>
+            <p>Build healthy habits, one day at a time.</p>
+        </div>
+    </div>
+
+    <div class="streak-hero">
+        <div class="streak-flame">🔥</div>
+        <h2 id="streak-current">0 Days</h2>
+        <p>Current Wellness Streak</p>
+        <span id="streak-best">Best streak: 0 days</span>
+    </div>
+
+    <div class="streak-stats">
+        <div class="streak-card">
+            <h3 id="streak-completed">0/4</h3>
+            <p>Today's Habits</p>
+        </div>
+
+        <div class="streak-card">
+            <h3 id="streak-total-days">0</h3>
+            <p>Days Recorded</p>
+        </div>
+
+        <div class="streak-card">
+            <h3 id="streak-next-goal">3 Days</h3>
+            <p>Next Milestone</p>
+        </div>
+    </div>
+
+    <div class="streak-panel">
+        <h2>Today's Checklist</h2>
+        <p>These goals are based on your Wellness Tracker entries.</p>
+
+        <div class="streak-habit">
+            <span>💧 Drink at least 2,000 ml water</span>
+            <strong id="streak-water-status">Pending</strong>
+        </div>
+
+        <div class="streak-habit">
+            <span>😴 Record 7–9 hours of sleep</span>
+            <strong id="streak-sleep-status">Pending</strong>
+        </div>
+
+        <div class="streak-habit">
+            <span>😊 Record your mood</span>
+            <strong id="streak-mood-status">Pending</strong>
+        </div>
+
+        <div class="streak-habit">
+            <span>🏃 Complete 30 minutes of activity</span>
+            <strong id="streak-activity-status">Pending</strong>
+        </div>
+
+        <div class="streak-progress-track">
+            <div id="streak-progress-bar"></div>
+        </div>
+
+        <p id="streak-progress-text">0% completed today</p>
+    </div>
+
+    <div class="streak-panel">
+        <h2>🏆 Achievements</h2>
+
+        <div class="achievement-grid">
+            <div class="achievement-card" id="badge-3">
+                <span>🌱</span>
+                <h3>Getting Started</h3>
+                <p>Reach a 3-day streak</p>
+                <strong>Locked</strong>
+            </div>
+
+            <div class="achievement-card" id="badge-7">
+                <span>⚡</span>
+                <h3>Consistency Pro</h3>
+                <p>Reach a 7-day streak</p>
+                <strong>Locked</strong>
+            </div>
+
+            <div class="achievement-card" id="badge-30">
+                <span>👑</span>
+                <h3>Wellness Champion</h3>
+                <p>Reach a 30-day streak</p>
+                <strong>Locked</strong>
+            </div>
+        </div>
+    </div>
+
+    <p id="streak-message" class="streak-message">
+        Complete today's wellness goals to get started!
+    </p>
+</section>
+
+<!-- WEEKLY WELLNESS REPORTS -->
+<section id="wellnessreports" class="page">
+
+    <div class="page-header">
+        <div>
+            <h1>Weekly Wellness Reports 📊</h1>
+            <p>Understand your habits and discover patterns in your wellness journey.</p>
+        </div>
+
+        <button id="wr-refresh" class="btn btn-primary" type="button">
+            Refresh Report
+        </button>
+    </div>
+
+    <div class="wr-hero">
+        <div>
+            <span class="wr-eyebrow">YOUR WEEKLY WELLNESS SCORE</span>
+            <h2 id="wr-week-score">—<small>/100</small></h2>
+            <p id="wr-week-summary">
+                Record your wellness habits to generate your report.
+            </p>
+        </div>
+        <div class="wr-hero-icon">📈</div>
+    </div>
+
+    <div class="wr-stats-grid">
+        <div class="wr-stat-card">
+            <span>💧</span>
+            <p>Average Water</p>
+            <h3 id="wr-water">—</h3>
+        </div>
+
+        <div class="wr-stat-card">
+            <span>😴</span>
+            <p>Average Sleep</p>
+            <h3 id="wr-sleep">—</h3>
+        </div>
+
+        <div class="wr-stat-card">
+            <span>🏃</span>
+            <p>Average Activity</p>
+            <h3 id="wr-activity">—</h3>
+        </div>
+
+        <div class="wr-stat-card">
+            <span>📝</span>
+            <p>Days Recorded</p>
+            <h3 id="wr-days">0/7</h3>
+        </div>
+    </div>
+
+    <div class="wr-panel">
+        <h2>Habit Performance</h2>
+        <p>Your recorded habits over the last seven calendar days.</p>
+
+        <div class="wr-habit-row">
+            <span>Water goal</span>
+            <div class="wr-track">
+                <div id="wr-water-bar"></div>
+            </div>
+            <strong id="wr-water-percent">0%</strong>
+        </div>
+
+        <div class="wr-habit-row">
+            <span>Sleep goal</span>
+            <div class="wr-track">
+                <div id="wr-sleep-bar"></div>
+            </div>
+            <strong id="wr-sleep-percent">0%</strong>
+        </div>
+
+        <div class="wr-habit-row">
+            <span>Activity goal</span>
+            <div class="wr-track">
+                <div id="wr-activity-bar"></div>
+            </div>
+            <strong id="wr-activity-percent">0%</strong>
+        </div>
+
+        <div class="wr-habit-row">
+            <span>Mood check-in</span>
+            <div class="wr-track">
+                <div id="wr-mood-bar"></div>
+            </div>
+            <strong id="wr-mood-percent">0%</strong>
+        </div>
+    </div>
+
+    <div class="wr-insights-grid">
+        <div class="wr-panel">
+            <h2>✨ Your Insights</h2>
+            <div id="wr-insights">
+                <p>Insights will appear when you have recorded data.</p>
+            </div>
+        </div>
+
+        <div class="wr-panel">
+            <h2>🎯 Suggested Next Steps</h2>
+            <div id="wr-recommendations">
+                <p>Personalized suggestions will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="wr-disclaimer">
+        This report summarizes self-recorded wellness habits. It is not a
+        medical diagnosis or a prediction of future health.
+    </p>
+
+</section>
+
+<!-- Smart Health Insights -->
+<section class="page" id="smartinsights">
+  <div class="section-header">
+    <div>
+      <h1>Smart Health Insights</h1>
+      <p>Personalized insights based on your wellness habits.</p>
+    </div>
+    <button id="shi-refresh" class="primary-btn" type="button">
+      Refresh Insights
+    </button>
+  </div>
+
+  <div class="wellness-hero">
+    <h2>Your Wellness Snapshot</h2>
+    <p id="shi-summary">
+      Log your daily wellness habits to discover useful patterns.
+    </p>
+  </div>
+
+  <div class="wellness-grid">
+    <div class="wellness-card">
+      <h3>💧 Hydration</h3>
+      <p id="shi-water">No water data available yet.</p>
+    </div>
+
+    <div class="wellness-card">
+      <h3>😴 Sleep</h3>
+      <p id="shi-sleep">No sleep data available yet.</p>
+    </div>
+
+    <div class="wellness-card">
+      <h3>🏃 Activity</h3>
+      <p id="shi-activity">No activity data available yet.</p>
+    </div>
+
+    <div class="wellness-card">
+      <h3>😊 Mood Patterns</h3>
+      <p id="shi-mood">Log your mood to see your patterns.</p>
+    </div>
+  </div>
+
+  <div class="wellness-card" style="margin-top: 24px;">
+    <h2>Personalized Recommendations</h2>
+    <div id="shi-recommendations">
+      <p>Your recommendations will appear here as you record your habits.</p>
+    </div>
+  </div>
+
+  <p class="wellness-note">
+    These insights support general wellness and are not a medical diagnosis.
+  </p>
+</section>
+
+<!-- ================= HEALTHORA FUTURESELF ================= -->
+<section id="futureself" class="page">
+
+    <div class="futureself-header">
+        <span class="futureself-eyebrow">YOUR PERSONAL WELLNESS LAB</span>
+        <h1>Meet Your FutureSelf 🔮</h1>
+        <p>
+            Explore how small habit changes could affect your
+            wellness goals. Your future starts with today's choices.
+        </p>
+    </div>
+
+    <div class="futureself-hero">
+        <div>
+            <span class="futureself-label">YOUR CURRENT WELLNESS SCORE</span>
+            <div class="futureself-score" id="fs-current-score">0%</div>
+            <p>Based on your recorded wellness habits</p>
+        </div>
+
+        <div class="futureself-orb" aria-hidden="true">
+            <span>✦</span>
+        </div>
+    </div>
+
+    <div class="futureself-section-heading">
+        <div>
+            <h2>What if you changed your habits?</h2>
+            <p>Move the sliders to simulate a different routine.</p>
+        </div>
+        <button type="button" id="fs-reset" class="fs-reset-btn">
+            Reset
+        </button>
+    </div>
+
+    <div class="futureself-grid">
+
+        <div class="futureself-controls">
+
+            <div class="fs-control-card">
+                <label for="fs-water">
+                    <span>💧 Daily water intake</span>
+                    <strong id="fs-water-value">2000 ml</strong>
+                </label>
+                <input type="range" id="fs-water"
+                    min="0" max="3500" step="250" value="2000">
+                <div class="fs-range-labels">
+                    <span>0 ml</span><span>3500 ml</span>
+                </div>
+            </div>
+
+            <div class="fs-control-card">
+                <label for="fs-sleep">
+                    <span>🌙 Sleep duration</span>
+                    <strong id="fs-sleep-value">8 hours</strong>
+                </label>
+                <input type="range" id="fs-sleep"
+                    min="0" max="12" step="0.5" value="8">
+                <div class="fs-range-labels">
+                    <span>0 hours</span><span>12 hours</span>
+                </div>
+            </div>
+
+            <div class="fs-control-card">
+                <label for="fs-activity">
+                    <span>🏃 Daily activity</span>
+                    <strong id="fs-activity-value">30 min</strong>
+                </label>
+                <input type="range" id="fs-activity"
+                    min="0" max="120" step="5" value="30">
+                <div class="fs-range-labels">
+                    <span>0 min</span><span>120 min</span>
+                </div>
+            </div>
+
+            <div class="fs-control-card">
+                <label for="fs-mood">
+                    <span>😊 Simulated mood</span>
+                </label>
+                <select id="fs-mood">
+                    <option value="0">Not selected</option>
+                    <option value="1">Low</option>
+                    <option value="2">Okay</option>
+                    <option value="3">Good</option>
+                    <option value="4">Great</option>
+                </select>
+            </div>
+
+            <button type="button" id="fs-simulate" class="fs-simulate-btn">
+                Simulate My Future →
+            </button>
+
+        </div>
+
+        <div class="futureself-results">
+
+            <div class="fs-result-card">
+                <span class="futureself-label">SIMULATED SCORE</span>
+                <div id="fs-future-score" class="fs-future-score">--%</div>
+                <div id="fs-score-change" class="fs-score-change">
+                    Adjust your habits to begin
+                </div>
+
+                <div class="fs-score-track">
+                    <div id="fs-score-bar" class="fs-score-bar"></div>
+                </div>
+            </div>
+
+            <div class="fs-insight-card">
+                <h3>✨ Your habit insights</h3>
+                <p id="fs-insight">
+                    Change the sliders and run your first simulation
+                    to discover opportunities for improvement.
+                </p>
+            </div>
+
+            <div class="fs-insight-card">
+                <h3>🧭 Your next small step</h3>
+                <p id="fs-next-step">
+                    Your personalized action plan will appear here.
+                </p>
+            </div>
+
+            <p class="fs-disclaimer">
+                This is an illustrative habit-based score, not a
+                medical prediction or a guarantee of future health.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="futureself-section-heading fs-pattern-heading">
+        <div>
+            <h2>Your Mood Patterns</h2>
+            <p>Explore patterns in the wellness records you've logged.</p>
+        </div>
+    </div>
+
+    <div class="fs-pattern-card">
+        <div class="fs-pattern-stat">
+            <span>Days recorded</span>
+            <strong id="fs-days-recorded">0</strong>
+        </div>
+
+        <div class="fs-pattern-stat">
+            <span>Most logged mood</span>
+            <strong id="fs-common-mood">Not enough data</strong>
+        </div>
+
+        <div class="fs-pattern-stat">
+            <span>Average sleep</span>
+            <strong id="fs-average-sleep">--</strong>
+        </div>
+
+        <p id="fs-pattern-insight">
+            Keep logging your daily wellness habits to explore
+            your personal patterns.
+        </p>
+
+        <button type="button" id="fs-refresh-patterns" class="fs-reset-btn">
+            Refresh patterns
+        </button>
+    </div>
+
+</section>
+<!-- =============== END FUTURESELF ================= -->
+
+
+<section
+    id="explore"
+    class="page"
+>
+
+
+    <div class="page-title">
+
+        <h1>
+            Explore Health
+        </h1>
+
+        <p>
+            Discover health content curated around
+            your interests and goals.
+        </p>
+
+    </div>
+
+
+    <div class="explore-categories">
+
+
+        <div class="category-card">
+            <div class="category-icon">🏋️</div>
+            <h3>Fitness</h3>
+        </div>
+
+
+        <div class="category-card">
+            <div class="category-icon">🍎</div>
+            <h3>Nutrition</h3>
+        </div>
+
+
+        <div class="category-card">
+            <div class="category-icon">🧠</div>
+            <h3>Mental Health</h3>
+        </div>
+
+
+        <div class="category-card">
+            <div class="category-icon">🪷</div>
+            <h3>Yoga</h3>
+        </div>
+
+
+        <div class="category-card">
+            <div class="category-icon">🌿</div>
+            <h3>Wellness</h3>
+        </div>
+
+
+        <div class="category-card">
+            <div class="category-icon">🔬</div>
+            <h3>Research</h3>
+        </div>
+
+
+    </div>
+
+
+    <div class="featured">
+
+        <img
+            src="src/assets/hero-health.png"
+            alt="Featured health"
+        >
+
+        <div class="featured-overlay">
+
+            <div>
+
+                <small>
+                    FEATURED THIS WEEK
+                </small>
+
+                <h2>
+                    A Stronger You
+                    Starts Today.
+                </h2>
+
+                <p>
+                    Build healthier habits,
+                    one step at a time.
+                </p>
+
+                <button class="primary-button">
+                    Explore Now →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Latest Articles
+            </h2>
+
+            <p>
+                Fresh health content for you
+            </p>
+
+        </div>
+
+        <a class="section-link">
+            See All →
+        </a>
+
+    </div>
+
+
+    <div class="explore-small-grid">
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+                <img
+                    src="src/assets/meditation.png"
+                    class="content-image"
+                    alt="Meditation"
+                >
+                <span class="badge">
+                    Wellness
+                </span>
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    The Benefits of Meditation
+                </h3>
+
+                <div class="card-footer">
+                    6 min read
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+                <img
+                    src="src/assets/nutrition.png"
+                    class="content-image"
+                    alt="Nutrition"
+                >
+                <span class="badge">
+                    Nutrition
+                </span>
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    Healthy Breakfast Ideas
+                </h3>
+
+                <div class="card-footer">
+                    5 min read
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+                <img
+                    src="src/assets/fitness.png"
+                    class="content-image"
+                    alt="Fitness"
+                >
+                <span class="badge">
+                    Fitness
+                </span>
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    Strength Training Basics
+                </h3>
+
+                <div class="card-footer">
+                    8 min read
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Trending Topics
+            </h2>
+
+            <p>
+                What people are exploring right now
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="interest-row">
+
+        <button class="interest-pill">
+            🥗 High Protein Foods
+        </button>
+
+        <button class="interest-pill">
+            🧘 Stress Management
+        </button>
+
+        <button class="interest-pill">
+            😴 Better Sleep
+        </button>
+
+        <button class="interest-pill">
+            💪 Muscle Building
+        </button>
+
+        <button class="interest-pill">
+            🧠 Mindfulness
+        </button>
+
+        <button class="interest-pill">
+            ❤️ Heart Health
+        </button>
+
+    </div>
+
+   
+<div class="section-header">
+
+    <div>
+
+        <h2>
+            Recently Viewed
+        </h2>
+
+        <p>
+            Content you viewed recently
+        </p>
+
+    </div>
+
+</div>
+
+
+<div
+    class="recommendation-grid"
+    id="recently-viewed-grid"
+>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ========================================================
+     ARTICLES PAGE
+========================================================= -->
+
+<section
+    id="articles"
+    class="page"
+>
+
+
+    <div class="page-title">
+
+        <h1>
+            Health Articles
+        </h1>
+
+        <p>
+            Evidence-based stories, guides and practical
+            health knowledge.
+        </p>
+
+    </div>
+
+
+    <div class="filter-row">
+
+        <button class="filter-button active">
+            All
+        </button>
+
+        <button class="filter-button">
+            Fitness
+        </button>
+
+        <button class="filter-button">
+            Nutrition
+        </button>
+
+        <button class="filter-button">
+            Mental Health
+        </button>
+
+        <button class="filter-button">
+            Wellness
+        </button>
+
+        <button class="filter-button">
+            Yoga
+        </button>
+
+    </div>
+
+
+    <div class="article-list">
+
+
+        <article
+    class="article-horizontal"
+    onclick="window.location.href='article.html?title=10%20Best%20Exercises%20for%20Beginners'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/fitness.png"
+                alt="Fitness"
+            >
+
+            <div class="article-info">
+
+                <span class="category">
+                    FITNESS
+                </span>
+
+                <h3>
+                    10 Best Exercises
+                    for Beginners
+                </h3>
+
+                <p>
+                    A complete beginner-friendly
+                    guide to building strength
+                    and improving daily fitness.
+                </p>
+
+                <div class="article-meta">
+                    <span>◷ 8 min read</span>
+                    <span>👁 12K views</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article
+    class="article-horizontal"
+    onclick="window.location.href='article.html?title=How%20to%20Build%20a%20Balanced%20Diet'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/nutrition.png"
+                alt="Nutrition"
+            >
+
+            <div class="article-info">
+
+                <span class="category">
+                    NUTRITION
+                </span>
+
+                <h3>
+                    How to Build a
+                    Balanced Diet
+                </h3>
+
+                <p>
+                    Learn how to create balanced
+                    meals with protein, vegetables,
+                    healthy fats and carbohydrates.
+                </p>
+
+                <div class="article-meta">
+                    <span>◷ 7 min read</span>
+                    <span>👁 9K views</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article
+    class="article-horizontal"
+    onclick="window.location.href='article.html?title=How%20to%20Manage%20Stress%20Naturally'"
+    style="cursor: pointer;"
+>
+            <img
+                src="src/assets/meditation.png"
+                alt="Mental health"
+            >
+
+            <div class="article-info">
+
+                <span class="category">
+                    MENTAL HEALTH
+                </span>
+
+                <h3>
+                    How to Manage
+                    Stress Naturally
+                </h3>
+
+                <p>
+                    Simple evidence-informed
+                    techniques that may help
+                    you manage everyday stress.
+                </p>
+
+                <div class="article-meta">
+                    <span>◷ 7 min read</span>
+                    <span>👁 8K views</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article
+    class="article-horizontal"
+    onclick="window.location.href='article.html?title=Beginner%27s%20Guide%20to%20Morning%20Yoga'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/Yoga.png"
+                alt="Yoga"
+            >
+
+            <div class="article-info">
+
+                <span class="category">
+                    YOGA
+                </span>
+
+                <h3>
+                    Beginner's Guide
+                    to Morning Yoga
+                </h3>
+
+                <p>
+                    Start your morning with
+                    simple stretches and
+                    mindful movement.
+                </p>
+
+                <div class="article-meta">
+                    <span>◷ 8 min read</span>
+                    <span>👁 7K views</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article
+    class="article-horizontal"
+    onclick="window.location.href='article.html?title=Small%20Habits%20That%20Improve%20Your%20Day'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/wellness.png"
+                alt="Wellness"
+            >
+
+            <div class="article-info">
+
+                <span class="category">
+                    WELLNESS
+                </span>
+
+                <h3>
+                    Small Habits That
+                    Improve Your Day
+                </h3>
+
+                <p>
+                    Discover small lifestyle
+                    improvements that can fit
+                    naturally into your routine.
+                </p>
+
+                <div class="article-meta">
+                    <span>◷ 6 min read</span>
+                    <span>👁 6K views</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article
+    class="article-horizontal"
+    onclick="window.location.href='article.html?title=Building%20a%20Sustainable%20Workout%20Routine'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/fitness.png"
+                alt="Workout"
+            >
+
+            <div class="article-info">
+
+                <span class="category">
+                    FITNESS
+                </span>
+
+                <h3>
+                    Building a Sustainable
+                    Workout Routine
+                </h3>
+
+                <p>
+                    Learn how to stay consistent
+                    without making exercise
+                    overwhelming.
+                </p>
+
+                <div class="article-meta">
+                    <span>◷ 9 min read</span>
+                    <span>👁 5K views</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ========================================================
+     PODCASTS PAGE
+========================================================= -->
+
+<section
+    id="podcasts"
+    class="page"
+>
+
+
+    <div class="page-title">
+
+        <h1>
+            Healthora Podcasts
+        </h1>
+
+        <p>
+            Listen to conversations, stories and
+            practical health insights.
+        </p>
+
+    </div>
+
+
+    
+<div
+    class="podcast-feature"
+    onclick="window.location.href='podcast.html?title=The%20Science%20of%20a%20Healthy%20Mindset'"
+    style="cursor: pointer;"
+>
+
+        <img
+            src="src/assets/podcast.png"
+            alt="Healthy Mindset Podcast"
+            class="podcast-cover"
+        >
+
+
+        <div class="podcast-feature-info">
+
+            <span class="podcast-label">
+                FEATURED PODCAST
+            </span>
+
+            <h2>
+                The Science of a
+                Healthy Mindset
+            </h2>
+
+            <p>
+                Explore the connection between
+                everyday habits, mindset and
+                overall well-being with
+                Dr. Anjali Mehta.
+            </p>
+
+            <div class="player">
+
+                <div class="player-time">
+
+                    <span>
+                        12:34
+                    </span>
+
+                    <span>
+                        32:00
+                    </span>
+
+                </div>
+
+                <div class="player-line">
+
+                    <div class="player-progress"></div>
+
+                </div>
+
+                <div class="player-controls">
+
+                    <button>
+                        ↶ 15
+                    </button>
+
+                   <button
+    class="big-play"
+    id="podcast-main-play"
+>
+    ▶
+</button>
+
+                    <button>
+                        15 ↷
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Popular Podcasts
+            </h2>
+
+            <p>
+                Recommended based on your interests
+            </p>
+
+        </div>
+
+        <a
+    href="#"
+    class="section-link"
+    id="popular-podcast-see-all"
+>
+    See All →
+</a>
+
+    </div>
+
+
+    <div class="podcast-library">
+
+
+        <article
+    class="podcast-card"
+    onclick="window.location.href='podcast.html?title=The%20Wellness%20Way'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/podcast.png"
+                alt="Wellness Way"
+            >
+
+            <h3>
+                The Wellness Way
+            </h3>
+
+            <p>
+                Dr. Anjali Mehta · 28 min
+            </p>
+
+        </article>
+
+
+        <article
+    class="podcast-card"
+    onclick="window.location.href='podcast.html?title=Mindful%20Living'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/meditation.png"
+                alt="Mindful Living"
+            >
+
+            <h3>
+                Mindful Living
+            </h3>
+
+            <p>
+                Emma Wilson · 30 min
+            </p>
+
+        </article>
+
+
+        <article
+    class="podcast-card"
+    onclick="window.location.href='podcast.html?title=Nutrition%20101'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/nutrition.png"
+                alt="Nutrition 101"
+            >
+
+            <h3>
+                Nutrition 101
+            </h3>
+
+            <p>
+                Dr. Priya Sharma · 35 min
+            </p>
+
+        </article>
+
+
+        <article
+    class="podcast-card"
+    onclick="window.location.href='podcast.html?title=Fitness%20Mindset'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/fitness.png"
+                alt="Fitness Mindset"
+            >
+
+            <h3>
+                Fitness Mindset
+            </h3>
+
+            <p>
+                Rahul Kapoor · 24 min
+            </p>
+
+        </article>
+
+
+       <article
+    class="podcast-card"
+    onclick="window.location.href='podcast.html?title=Yoga%20Talks'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/Yoga.png"
+                alt="Yoga Talks"
+            >
+
+            <h3>
+                Yoga Talks
+            </h3>
+
+            <p>
+                Meera Joshi · 26 min
+            </p>
+
+        </article>
+
+
+        <article
+    class="podcast-card"
+    onclick="window.location.href='podcast.html?title=Healthy%20Lifestyle'"
+    style="cursor: pointer;"
+>
+
+            <img
+                src="src/assets/wellness.png"
+                alt="Healthy Lifestyle"
+            >
+
+            <h3>
+                Healthy Lifestyle
+            </h3>
+
+            <p>
+                Dr. Arjun Singh · 31 min
+            </p>
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ========================================================
+     VIDEOS PAGE
+========================================================= -->
+
+<section
+    id="videos"
+    class="page"
+>
+
+
+    <div class="page-title">
+
+        <h1>
+            Health Videos
+        </h1>
+
+        <p>
+            Watch workouts, wellness guides,
+            nutrition lessons and more.
+        </p>
+
+    </div>
+
+
+    <div class="filter-row">
+
+        <button class="filter-button active">
+            All Videos
+        </button>
+
+        <button class="filter-button">
+            Fitness
+        </button>
+
+        <button class="filter-button">
+            Yoga
+        </button>
+
+        <button class="filter-button">
+            Nutrition
+        </button>
+
+        <button class="filter-button">
+            Meditation
+        </button>
+
+    </div>
+
+
+    <div class="video-grid">
+
+
+        <article class="video-card">
+
+            <div class="video-thumbnail">
+
+                <img
+                    src="src/assets/fitness.png"
+                    alt="Workout"
+                >
+
+                <button class="video-play">
+                    ▶
+                </button>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Full Body Beginner Workout
+                </h3>
+
+                <p>
+                    Fitness · 12 min · 24K views
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="video-card">
+
+            <div class="video-thumbnail">
+
+                <img
+                    src="src/assets/Yoga.png"
+                    alt="Yoga"
+                >
+
+                <button class="video-play">
+                    ▶
+                </button>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Morning Yoga Routine
+                </h3>
+
+                <p>
+                    Yoga · 18 min · 18K views
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="video-card">
+
+            <div class="video-thumbnail">
+
+                <img
+                    src="src/assets/meditation.png"
+                    alt="Meditation"
+                >
+
+                <button class="video-play">
+                    ▶
+                </button>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Guided Meditation for Beginners
+                </h3>
+
+                <p>
+                    Wellness · 15 min · 16K views
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="video-card">
+
+            <div class="video-thumbnail">
+
+                <img
+                    src="src/assets/nutrition.png"
+                    alt="Nutrition"
+                >
+
+                <button class="video-play">
+                    ▶
+                </button>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Build a Balanced Breakfast
+                </h3>
+
+                <p>
+                    Nutrition · 10 min · 13K views
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="video-card">
+
+            <div class="video-thumbnail">
+
+                <img
+                    src="src/assets/wellness.png"
+                    alt="Wellness"
+                >
+
+                <button class="video-play">
+                    ▶
+                </button>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Simple Habits for Better Sleep
+                </h3>
+
+                <p>
+                    Wellness · 9 min · 11K views
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article class="video-card">
+
+            <div class="video-thumbnail">
+
+                <img
+                    src="src/assets/fitness.png"
+                    alt="Strength"
+                >
+
+                <button class="video-play">
+                    ▶
+                </button>
+
+            </div>
+
+            <div class="video-info">
+
+                <h3>
+                    Strength Training Basics
+                </h3>
+
+                <p>
+                    Fitness · 20 min · 9K views
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ========================================================
+     SAVED PAGE
+========================================================= -->
+
+<section
+    id="saved"
+    class="page"
+>
+
+
+    <div class="page-title">
+
+        <h1>
+            Saved Content
+        </h1>
+
+        <p>
+            Everything you've saved in one place.
+        </p>
+
+    </div>
+
+
+    <div class="saved-layout">
+
+
+     <div class="saved-main" id="saved-content-list">
+
+
+            <article class="saved-item">
+
+                <img
+                    src="src/assets/fitness.png"
+                    alt="Fitness"
+                >
+
+                <div class="saved-item-content">
+
+                    <span class="category">
+                        FITNESS
+                    </span>
+
+                    <h3>
+                        10 Best Exercises
+                        for Beginners
+                    </h3>
+
+                    <p>
+                        A simple workout guide
+                        designed for beginners.
+                    </p>
+
+                    <div class="article-meta">
+
+                        <span>
+                            ◷ 8 min read
+                        </span>
+
+                        <span>
+                            📅 Saved today
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="saved-item">
+
+                <img
+                    src="src/assets/nutrition.png"
+                    alt="Nutrition"
+                >
+
+                <div class="saved-item-content">
+
+                    <span class="category">
+                        NUTRITION
+                    </span>
+
+                    <h3>
+                        Healthy Breakfast Ideas
+                    </h3>
+
+                    <p>
+                        Easy nutritious breakfast
+                        ideas for busy mornings.
+                    </p>
+
+                    <div class="article-meta">
+
+                        <span>
+                            ◷ 5 min read
+                        </span>
+
+                        <span>
+                            📅 Saved yesterday
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="saved-item">
+
+                <img
+                    src="src/assets/Yoga.png"
+                    alt="Yoga"
+                >
+
+                <div class="saved-item-content">
+
+                    <span class="category">
+                        YOGA
+                    </span>
+
+                    <h3>
+                        Beginner's Guide to Yoga
+                    </h3>
+
+                    <p>
+                        Learn the basics of yoga
+                        and mindful movement.
+                    </p>
+
+                    <div class="article-meta">
+
+                        <span>
+                            ◷ 8 min read
+                        </span>
+
+                        <span>
+                            📅 Saved 2 days ago
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <aside class="saved-sidebar">
+
+            <h3>
+                Saved Collections
+            </h3>
+
+
+            <div class="saved-folder">
+                🏋️ Fitness Journey
+                <span>12</span>
+            </div>
+
+            <div class="saved-folder">
+                🥗 Nutrition Plans
+                <span>8</span>
+            </div>
+
+            <div class="saved-folder">
+                🧠 Mental Wellness
+                <span>10</span>
+            </div>
+
+            <div class="saved-folder">
+                ❤️ Heart Health
+                <span>6</span>
+            </div>
+
+
+            <button
+                class="primary-button"
+                style="width:100%;margin-top:12px;"
+                onclick="openPage('collections')"
+            >
+                Manage Collections
+            </button>
+
+        </aside>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ========================================================
+     COLLECTIONS PAGE
+========================================================= -->
+
+<section
+    id="collections"
+    class="page"
+>
+
+
+    <div class="collections-header">
+
+        <div class="page-title" style="margin:0;">
+
+            <h1>
+                My Collections
+            </h1>
+
+            <p>
+                Organize your saved health resources.
+            </p>
+
+        </div>
+
+
+        <button
+    class="primary-button"
+    id="new-collection-btn"
+>
+    + New Collection
+</button>
+
+    </div>
+
+
+    <div
+    class="collection-grid"
+    id="collection-list"
+>
+
+
+        <article class="collection-card">
+
+            <div class="collection-top">
+
+                <div class="collection-icon">
+                    🏋️
+                </div>
+
+                <span>
+                    ⋮
+                </span>
+
+            </div>
+
+            <h3>
+                My Fitness Journey
+            </h3>
+
+            <p>
+                12 items · Updated today
+            </p>
+
+            <div class="collection-progress">
+                <span style="width:72%;"></span>
+            </div>
+
+            <div class="collection-preview">
+
+                <img
+                    src="src/assets/fitness.png"
+                    alt=""
+                >
+
+                <img
+                    src="src/assets/Yoga.png"
+                    alt=""
+                >
+
+                <img
+                    src="src/assets/wellness.png"
+                    alt=""
+                >
+
+            </div>
+
+        </article>
+
+
+        <article class="collection-card">
+
+            <div class="collection-top">
+
+                <div class="collection-icon">
+                    🥗
+                </div>
+
+                <span>
+                    ⋮
+                </span>
+
+            </div>
+
+            <h3>
+                Nutrition Plans
+            </h3>
+
+            <p>
+                8 items · Updated yesterday
+            </p>
+
+            <div class="collection-progress">
+                <span style="width:56%;"></span>
+            </div>
+
+            <div class="collection-preview">
+
+                <img
+                    src="src/assets/nutrition.png"
+                    alt=""
+                >
+
+                <img
+                    src="src/assets/fitness.png"
+                    alt=""
+                >
+
+                <img
+                    src="src/assets/wellness.png"
+                    alt=""
+                >
+
+            </div>
+
+        </article>
+
+
+        <article class="collection-card">
+
+            <div class="collection-top">
+
+                <div class="collection-icon">
+                    🧠
+                </div>
+
+                <span>
+                    ⋮
+                </span>
+
+            </div>
+
+            <h3>
+                Mental Wellness
+            </h3>
+
+            <p>
+                10 items · Updated 2 days ago
+            </p>
+
+            <div class="collection-progress">
+                <span style="width:82%;"></span>
+            </div>
+
+            <div class="collection-preview">
+
+                <img
+                    src="src/assets/meditation.png"
+                    alt=""
+                >
+
+                <img
+                    src="src/assets/wellness.png"
+                    alt=""
+                >
+
+                <img
+                    src="src/assets/Yoga.png"
+                    alt=""
+                >
+
+            </div>
+
+        </article>
+
+
+        <article class="collection-card">
+
+            <div class="collection-top">
+
+                <div class="collection-icon">
+                    ❤️
+                </div>
+
+                <span>
+                    ⋮
+                </span>
+
+            </div>
+
+            <h3>
+                Heart Health Guides
+            </h3>
+
+            <p>
+                6 items · Updated 3 days ago
+            </p>
+
+            <div class="collection-progress">
+                <span style="width:43%;"></span>
+            </div>
+
+            <div class="collection-preview">
+
+                <img
+                    src="src/assets/wellness.png"
+                    alt=""
+                >
+
+                <img
+                    src="src/assets/nutrition.png"
+                    alt=""
+                >
+
+                <img
+                    src="src/assets/meditation.png"
+                    alt=""
+                >
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Recently Added
+            </h2>
+
+            <p>
+                Content you've organized recently
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="recommendation-grid">
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/fitness.png"
+                    class="content-image"
+                    alt=""
+                >
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    Beginner Strength Training
+                </h3>
+
+                <div class="card-footer">
+                    Fitness · 8 min
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/nutrition.png"
+                    class="content-image"
+                    alt=""
+                >
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    High Protein Foods
+                </h3>
+
+                <div class="card-footer">
+                    Nutrition · 6 min
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/meditation.png"
+                    class="content-image"
+                    alt=""
+                >
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    Mindfulness for Beginners
+                </h3>
+
+                <div class="card-footer">
+                    Wellness · 7 min
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="content-card">
+
+            <div class="image-container">
+
+                <img
+                    src="src/assets/Yoga.png"
+                    class="content-image"
+                    alt=""
+                >
+
+            </div>
+
+            <div class="content-body">
+
+                <h3>
+                    Morning Yoga Routine
+                </h3>
+
+                <div class="card-footer">
+                    Yoga · 9 min
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ========================================================
+     CREATOR HUB
+========================================================= -->
+
+<section
+    id="creator"
+    class="page"
+>
+
+
+    <div class="creator-top">
+
+        <div class="page-title" style="margin:0;">
+
+            <h1>
+                Creator Dashboard
+            </h1>
+
+            <p>
+                Understand how your health content
+                performs with the community.
+            </p>
+
+        </div>
+
+
+        <select class="creator-select">
+
+            <option>
+                Last 30 Days
+            </option>
+
+            <option>
+                Last 7 Days
+            </option>
+
+            <option>
+                Last 90 Days
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="creator-stats">
+
+
+        <div class="creator-stat">
+
+            <span>
+                Total Views
+            </span>
+
+            <h2>
+                12,450
+            </h2>
+
+            <small>
+                ↑ 12% from last month
+            </small>
+
+        </div>
+
+
+        <div class="creator-stat">
+
+            <span>
+                Recommendation Impressions
+            </span>
+
+            <h2>
+                8,900
+            </h2>
+
+            <small>
+                ↑ 10% from last month
+            </small>
+
+        </div>
+
+
+        <div class="creator-stat">
+
+            <span>
+                Click Through Rate
+            </span>
+
+            <h2>
+                12.4%
+            </h2>
+
+            <small>
+                ↑ 5% from last month
+            </small>
+
+        </div>
+
+
+        <div class="creator-stat">
+
+            <span>
+                Reader Retention
+            </span>
+
+            <h2>
+                68%
+            </h2>
+
+            <small>
+                ↑ 7% from last month
+            </small>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="analytics-grid">
+
+
+        <div class="chart-box">
+
+            <h2>
+                Content Performance
+            </h2>
+
+            <p>
+                Views and recommendation impressions
+            </p>
+
+
+            <div class="chart">
+
+                <div class="chart-line"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="top-content">
+
+            <h2>
+                Top Performing Content
+            </h2>
+
+
+            <div class="performance-item">
+
+                <img
+                    src="src/assets/fitness.png"
+                    alt=""
+                >
+
+                <div class="performance-info">
+
+                    <h3>
+                        10 Best Exercises
+                    </h3>
+
+                    <p>
+                        4,320 views · 12.4% CTR
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="performance-item">
+
+                <img
+                    src="src/assets/nutrition.png"
+                    alt=""
+                >
+
+                <div class="performance-info">
+
+                    <h3>
+                        Healthy Breakfast Ideas
+                    </h3>
+
+                    <p>
+                        3,120 views · 10.2% CTR
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="performance-item">
+
+                <img
+                    src="src/assets/meditation.png"
+                    alt=""
+                >
+
+                <div class="performance-info">
+
+                    <h3>
+                        Manage Stress Naturally
+                    </h3>
+
+                    <p>
+                        2,890 views · 9.8% CTR
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="performance-item">
+
+                <img
+                    src="src/assets/Yoga.png"
+                    alt=""
+                >
+
+                <div class="performance-info">
+
+                    <h3>
+                        Beginner Yoga Routine
+                    </h3>
+
+                    <p>
+                        2,410 views · 8.9% CTR
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Content Insights
+            </h2>
+
+            <p>
+                Understand your audience
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="recommendation-grid">
+
+
+        <div class="right-card">
+
+            <div style="font-size:25px;">
+                👥
+            </div>
+
+            <h2 style="margin-top:10px;">
+                Audience
+            </h2>
+
+            <p class="right-subtitle">
+                Most viewers are interested
+                in Fitness and Wellness.
+            </p>
+
+        </div>
+
+
+        <div class="right-card">
+
+            <div style="font-size:25px;">
+                📈
+            </div>
+
+            <h2 style="margin-top:10px;">
+                Engagement
+            </h2>
+
+            <p class="right-subtitle">
+                Engagement increased
+                by 18% this month.
+            </p>
+
+        </div>
+
+
+        <div class="right-card">
+
+            <div style="font-size:25px;">
+                🔥
+            </div>
+
+            <h2 style="margin-top:10px;">
+                Trending
+            </h2>
+
+            <p class="right-subtitle">
+                Fitness content is currently
+                receiving more impressions.
+            </p>
+
+        </div>
+
+
+        <div class="right-card">
+
+            <div style="font-size:25px;">
+                💡
+            </div>
+
+            <h2 style="margin-top:10px;">
+                Suggestions
+            </h2>
+
+            <p class="right-subtitle">
+                Try creating content around
+                beginner fitness.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ========================================================
+     PROFILE
+========================================================= -->
+
+<section
+    id="profile"
+    class="page"
+>
+
+
+    <div class="page-title">
+
+        <h1>
+            My Profile
+        </h1>
+
+        <p>
+            Manage your Healthora profile,
+            interests and activity.
+        </p>
+
+    </div>
+
+
+    <div class="profile-cover">
+
+        <div class="profile-cover-content">
+            🌿
+        </div>
+
+    </div>
+
+
+    <div class="profile-card">
+
+
+      <div class="profile-avatar-large" id="profile-avatar"></div>
+
+<input
+    type="file"
+    id="profile-image-input"
+    accept="image/*"
+    style="display: none;"
+>
+
+<button
+    class="secondary-button"
+    id="change-profile-image"
+>
+    Change Photo
+</button>
+
+       <div class="profile-info">
+
+    <h1 class="profile-name">
+        
+    </h1>
+
+    <p class="profile-email">
+       
+    </p>
+
+    <p>
+        Healthora member since 2026
+    </p>
+
+</div>
+   <div class="profile-actions">
+
+    <button
+        class="primary-button"
+        id="edit-profile-btn"
+    >
+        Edit Profile
+    </button>
+
+    <button
+        class="secondary-button"
+        id="save-profile-btn"
+    >
+        Save Profile
+    </button>
+
+</div>
+
+    </div>
+
+
+    <div class="profile-grid">
+
+
+        <div class="profile-box">
+
+            <h2>
+                My Interests
+            </h2>
+
+
+    <div
+    class="interest-row"
+    id="profile-interests"
+>
+
+                <span class="interest-pill">
+                    🏋️ Fitness
+                </span>
+
+                <span class="interest-pill">
+                    🍎 Nutrition
+                </span>
+
+                <span class="interest-pill">
+                    🧠 Mental Health
+                </span>
+
+                <span class="interest-pill">
+                    🪷 Yoga
+                </span>
+
+                <span class="interest-pill">
+                    🌿 Wellness
+                </span>
+
+                <span class="interest-pill">
+                    🔬 Medical Research
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-box">
+
+            <h2>
+                Account Statistics
+            </h2>
+
+
+            <div class="activity">
+
+                <div class="activity-icon">
+                    📚
+                </div>
+
+                <div class="activity-info">
+
+                    <strong id="profile-saved-count">
+    0 Saved Items
+</strong>
+
+                    <span>
+                        Keep exploring new topics
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="activity">
+
+                <div class="activity-icon">
+                    🎧
+                </div>
+
+                <div class="activity-info">
+
+                    <strong id="profile-collection-count">
+    0 Collections
+</strong>
+
+                    <span>
+                        Total listening activity
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="activity">
+
+                <div class="activity-icon">
+                    ❤️
+                </div>
+
+                <div class="activity-info">
+
+                 <strong id="profile-activity-count">
+    0 Total Activity
+</strong>
+
+                    <span>
+                        Your favorite resources
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>
+                Recent Activity
+            </h2>
+
+            <p>
+                Your latest interactions
+            </p>
+
+        </div>
+
+       <a
+    href="#"
+    class="section-link"
+    id="recent-activity-see-all"
+>
+    See All →
+</a>
+
+    </div>
+
+
+    <div class="profile-box">
+        <div class="profile-box" id="recent-activity-list"></div>
+
+
+        <div
+    class="profile-box"
+    id="recent-activity-list"
+>
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- ========================================================
+     RIGHT PANEL
+========================================================= -->
+
+<aside class="right-panel">
+
+
+    <!-- PROGRESS -->
+
+    <div class="right-card">
+
+        <h2>
+            Your Progress
+        </h2>
+
+        <p class="right-subtitle">
+            Keep going! You're doing great.
+        </p>
+
+
+        <div class="progress-wrapper">
+
+
+            <div class="progress-circle">
+
+                <div class="progress-inner">
+
+                    <strong id="wellness-score">
+    72%
+</strong>
+
+                    <span>
+                        Wellness Score
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats-list">
+
+
+                <div class="stat-row">
+
+                    <div class="stat-left">
+
+                        <div class="stat-icon">
+                            📄
+                        </div>
+
+                        Articles Read
+
+                    </div>
+
+                   <strong id="progress-articles">
+    0
+</strong>
+                </div>
+
+
+                <div class="stat-row">
+
+                    <div class="stat-left">
+
+                        <div class="stat-icon">
+                            🎙️
+                        </div>
+
+                        Podcasts Listened
+
+                    </div>
+
+                   <strong id="progress-podcasts">
+    0
+</strong>
+
+                </div>
+
+
+                <div class="stat-row">
+
+                    <div class="stat-left">
+
+                        <div class="stat-icon">
+                            🔥
+                        </div>
+
+                        Streak Days
+
+                    </div>
+
+                    <strong id="progress-streak">
+    0
+</strong>
+
+                </div>
+
+
+              <div class="stat-row">
+
+    <div class="stat-left">
+        <div class="stat-icon">
+            🔖
+        </div>
+
+        Saved Items
+    </div>
+
+    <strong id="saved-count">
+        18
+    </strong>
+
+</div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- INSPIRATION -->
+
+    <div class="right-card">
+
+        <div class="quote-banner">
+
+            “A healthy mind leads
+            to a healthier life.”
+
+        </div>
+
+
+        <div style="margin-top:17px;">
+
+            <h2>
+                Today's Inspiration
+            </h2>
+
+            <p class="right-subtitle">
+                A new thought to keep you going
+            </p>
+
+        </div>
+
+
+        <div class="quote-box">
+
+            “Take care of your body.
+            It's the only place you
+            have to live.”
+
+            <div class="quote-author">
+                — Jim Rohn
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- UPCOMING -->
+
+    <div class="right-card">
+
+
+        <div class="card-heading">
+
+            <div>
+
+                <h2>
+                    Upcoming
+                </h2>
+
+                <p class="right-subtitle">
+                    Your wellness reminders
+                </p>
+
+            </div>
+
+          <a
+    href="#"
+    class="section-link"
+    id="upcoming-view-all"
+>
+    View All →
+</a>
+
+        </div>
+
+
+        <div class="upcoming-item">
+
+            <div class="upcoming-icon">
+                💧
+            </div>
+
+            <div class="upcoming-info">
+
+                <strong>
+                    Drink Water
+                </strong>
+
+                <span>
+                    Today, 6:00 PM
+                </span>
+
+            </div>
+
+            <div class="check-circle"></div>
+
+        </div>
+
+
+        <div class="upcoming-item">
+
+            <div class="upcoming-icon">
+                🏃
+            </div>
+
+            <div class="upcoming-info">
+
+                <strong>
+                    Morning Stretch
+                </strong>
+
+                <span>
+                    Tomorrow, 8:00 AM
+                </span>
+
+            </div>
+
+            <div class="check-circle"></div>
+
+        </div>
+
+
+        <div class="upcoming-item">
+
+            <div class="upcoming-icon">
+                🪷
+            </div>
+
+            <div class="upcoming-info">
+
+                <strong>
+                    Mindfulness Session
+                </strong>
+
+                <span>
+                    Tomorrow, 9:00 PM
+                </span>
+
+            </div>
+
+            <div class="check-circle"></div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- POPULAR PODCAST -->
+
+    <div class="right-card">
+
+
+        <div class="card-heading">
+
+            <h2>
+                Popular Podcasts
+            </h2>
+
+           <a
+    href="#"
+    class="section-link"
+    id="home-popular-podcast-see-all"
+>
+    See All →
+</a>
+        </div>
+
+
+        <div class="podcast">
+
+            <img
+                src="src/assets/podcast.png"
+                alt="Podcast"
+            >
+
+
+            <div class="podcast-info">
+
+                <h3>
+                    The Wellness Way
+                </h3>
+
+                <p>
+                    By Dr. Anjali Mehta
+                </p>
+
+
+                <div class="podcast-bottom">
+
+                    <span
+                        style="
+                            color:#718080;
+                            font-size:9px;
+                        "
+                    >
+                        28 min
+                    </span>
+<button
+    class="play-button"
+    id="popular-podcast-play"
+>
+    ▶
+</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</aside>
+
+
+</div>
+
+
+
+<!-- ========================================================
+     MOBILE NAV
+========================================================= -->
+
+<nav class="mobile-nav">
+
+
+    <button
+        class="active"
+        data-page="home"
+    >
+
+        <span>
+            🏠
+        </span>
+
+        <span>
+            Home
+        </span>
+
+    </button>
+
+    <button type="button" data-page="wellness">
+    <span>🌿</span>
+    <span>Wellness</span>
+</button>
+
+<button type="button" data-page="futureself">
+    <span>🔮</span>
+    <span>FutureSelf</span>
+</button>
+
+
+    <button data-page="explore">
+
+        <span>
+            🔍
+        </span>
+
+        <span>
+            Explore
+        </span>
+
+    </button>
+
+
+    <button data-page="articles">
+
+        <span>
+            📄
+        </span>
+
+        <span>
+            Articles
+        </span>
+
+    </button>
+
+
+    <button data-page="saved">
+
+        <span>
+            🔖
+        </span>
+
+        <span>
+            Saved
+        </span>
+
+    </button>
+
+
+    <button data-page="profile">
+
+        <span>
+            👤
+        </span>
+
+        <span>
+            Profile
+        </span>
+
+    </button>
+
+
+</nav>
+
+
+
+<script>
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+const pages =
+    document.querySelectorAll(".page");
+
+
+const navButtons =
+    document.querySelectorAll(
+        ".nav-item[data-page]"
+    );
+
+
+const mobileButtons =
+    document.querySelectorAll(
+        ".mobile-nav button[data-page]"
+    );
+
+
+function openPage(pageName){
+
+    /* Hide every page */
+
+    pages.forEach(function(page){
+
+        page.classList.remove("active");
+
+    });
+
+
+    /* Show selected page */
+
+    const selected =
+        document.getElementById(pageName);
+
+
+    if(selected){
+
+        selected.classList.add("active");
+
+    }
+
+
+    /* Desktop sidebar */
+
+    navButtons.forEach(function(button){
+
+        button.classList.remove("active");
+
+
+        if(
+            button.dataset.page === pageName
+        ){
+
+            button.classList.add("active");
+
+        }
+
+    });
+
+
+    /* Mobile navigation */
+
+    mobileButtons.forEach(function(button){
+
+        button.classList.remove("active");
+
+
+        if(
+            button.dataset.page === pageName
+        ){
+
+            button.classList.add("active");
+
+        }
+
+    });
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   DESKTOP EVENTS
+========================================================= */
+
+navButtons.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            openPage(
+                button.dataset.page
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   MOBILE EVENTS
+========================================================= */
+
+mobileButtons.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            openPage(
+                button.dataset.page
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   FILTER BUTTONS
+========================================================= */
+
+const filterButtons =
+    document.querySelectorAll(
+        ".filter-button"
+    );
+
+
+filterButtons.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            const group =
+                button.parentElement;
+
+            group
+                .querySelectorAll(".filter-button")
+                .forEach(function(btn){
+
+                    btn.classList.remove("active");
+
+                });
+
+
+            button.classList.add("active");
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   SAVE BUTTONS
+========================================================= */
+
+const saveButtons =
+    document.querySelectorAll(".save");
+
+
+saveButtons.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            if(
+                button.textContent.trim() === "♧"
+            ){
+
+                button.textContent = "🔖";
+
+            }
+            else{
+
+                button.textContent = "♧";
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   CHECK REMINDERS
+========================================================= */
+
+const checkCircles =
+    document.querySelectorAll(".check-circle");
+
+checkCircles.forEach(function(circle, index) {
+
+    const reminderKey =
+        "healthoraReminder_" + index;
+
+
+    // Refresh ke baad restore
+    if (
+        localStorage.getItem(reminderKey) === "true"
+    ) {
+
+        circle.style.background = "#219653";
+        circle.style.borderColor = "#219653";
+        circle.innerHTML = "✓";
+        circle.style.color = "#ffffff";
+
+    }
+
+
+    // Click
+    circle.addEventListener("click", function() {
+
+        const completed =
+            localStorage.getItem(reminderKey) === "true";
+
+
+        if (completed) {
+
+            localStorage.removeItem(reminderKey);
+
+            circle.style.background = "";
+            circle.style.borderColor = "";
+            circle.innerHTML = "";
+            circle.style.color = "";
+
+        } else {
+
+            localStorage.setItem(
+                reminderKey,
+                "true"
+            );
+
+            /* Add reminder activity */
+
+let reminderActivities =
+    JSON.parse(
+        localStorage.getItem(
+           "healthoraActivities"
+        )
+    ) || [];
+
+
+const reminderNames = [
+    "Drink Water",
+    "Morning Stretch",
+    "Mindfulness Session"
+];
+
+
+reminderActivities.unshift({
+
+    type: "Reminder",
+
+    title:
+        "Completed " +
+        reminderNames[index],
+
+    time:
+        new Date().toLocaleString()
+
+});
+
+
+reminderActivities =
+    reminderActivities.slice(0, 10);
+
+
+localStorage.setItem(
+    "healthoraActivities",
+    JSON.stringify(
+        reminderActivities
+    )
+);
+
+updateRecentActivity();
+
+            circle.style.background =
+                "#219653";
+
+            circle.style.borderColor =
+                "#219653";
+
+            circle.innerHTML =
+                "✓";
+
+            circle.style.color =
+                "#ffffff";
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   RECENTLY VIEWED
+========================================================= */
+
+function addRecentlyViewed(title, image, category) {
+
+    let recentlyViewed =
+        JSON.parse(
+            localStorage.getItem(
+                "healthoraRecentlyViewed"
+            )
+        ) || [];
+
+
+    /* Remove duplicate */
+
+    recentlyViewed =
+        recentlyViewed.filter(function(item) {
+
+            return item.title !== title;
+
+        });
+
+
+    /* Add latest item at beginning */
+
+    recentlyViewed.unshift({
+
+        title: title,
+        image: image,
+        category: category
+
+    });
+
+
+    /* Keep only latest 4 */
+
+    recentlyViewed =
+        recentlyViewed.slice(0, 4);
+
+
+    localStorage.setItem(
+        "healthoraRecentlyViewed",
+        JSON.stringify(
+            recentlyViewed
+        )
+    );
+
+
+    showRecentlyViewed();
+
+}
+
+
+function showRecentlyViewed() {
+
+    const grid =
+        document.getElementById(
+            "recently-viewed-grid"
+        );
+
+
+    if (!grid) {
+        return;
+    }
+
+
+    const recentlyViewed =
+        JSON.parse(
+            localStorage.getItem(
+                "healthoraRecentlyViewed"
+            )
+        ) || [];
+
+
+    grid.innerHTML = "";
+
+
+    if (
+        recentlyViewed.length === 0
+    ) {
+
+        grid.innerHTML = `
+            <p>
+                No recently viewed content yet.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    recentlyViewed.forEach(
+        function(item) {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "content-card";
+
+
+            card.innerHTML = `
+
+                <div class="image-container">
+
+                    <img
+                        src="${item.image}"
+                        class="content-image"
+                        alt="${item.category}"
+                    >
+
+                    <span class="badge">
+                        ${item.category}
+                    </span>
+
+                </div>
+
+
+                <div class="content-body">
+
+                    <h3>
+                        ${item.title}
+                    </h3>
+
+                    <div class="card-footer">
+                        Recently Viewed
+                    </div>
+
+                </div>
+
+            `;
+
+            card.addEventListener(
+    "click",
+    function() {
+
+        const title =
+            item.title.toLowerCase();
+
+        openPage("articles");
+
+        setTimeout(function() {
+
+            const articles =
+                document.querySelectorAll(
+                    "#articles .article-horizontal"
+                );
+
+            articles.forEach(function(article) {
+
+                const heading =
+                    article.querySelector("h3");
+
+                if (!heading) {
+                    return;
+                }
+
+                const articleTitle =
+                    heading.textContent
+                        .trim()
+                        .replace(/\s+/g, " ")
+                        .toLowerCase();
+
+                if (
+                    articleTitle.includes(title) ||
+                    title.includes(articleTitle)
+                ) {
+
+                    article.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                    article.style.outline =
+                        "3px solid #219653";
+
+                    setTimeout(function() {
+
+                        article.style.outline = "";
+
+                    }, 2000);
+
+                }
+
+            });
+
+        }, 300);
+
+    }
+);
+
+
+            grid.appendChild(card);
+
+        }
+    );
+
+}
+
+
+/* Load Recently Viewed */
+
+showRecentlyViewed();
+
+/* =========================================================
+   RECENTLY VIEWED CLICK
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".recently-viewable"
+    )
+    .forEach(function(card) {
+
+        card.addEventListener(
+            "click",
+            function(event) {
+
+                /* Save button par click ho
+                   to recently viewed nahi hoga */
+
+                if (
+                    event.target.closest(".save")
+                ) {
+                    return;
+                }
+
+
+                const title =
+                    card.dataset.title;
+
+                const image =
+                    card.dataset.image;
+
+                const category =
+                    card.dataset.category;
+
+
+                addRecentlyViewed(
+                    title,
+                    image,
+                    category
+                );
+
+            }
+        );
+
+    });
+
+
+   /* =========================================================
+   GLOBAL SEARCH
+========================================================= */
+
+const globalSearch =
+    document.getElementById(
+        "global-search"
+    );
+
+if (globalSearch) {
+
+    globalSearch.addEventListener(
+        "input",
+        function() {
+
+            const searchText =
+                globalSearch.value
+                    .trim()
+                    .toLowerCase();
+
+
+            const allContent =
+                document.querySelectorAll(
+                    ".content-card, .article-horizontal, .podcast-card, .video-card, .trending-item"
+                );
+
+
+            allContent.forEach(
+                function(item) {
+
+                    const heading =
+                        item.querySelector("h3");
+
+                    const badge =
+                        item.querySelector(".badge");
+
+                    const category =
+                        item.dataset.category ||
+                        (badge
+                            ? badge.textContent
+                            : "");
+
+
+                    if (!heading) {
+                        return;
+                    }
+
+
+                    const title =
+                        heading.textContent
+                            .trim()
+                            .toLowerCase();
+
+
+                    const categoryText =
+                        category
+                            .trim()
+                            .toLowerCase();
+
+
+                    if (
+                        searchText === "" ||
+                        title.includes(searchText) ||
+                        categoryText.includes(searchText)
+                    ) {
+
+                        item.style.display = "";
+
+                    } else {
+
+                        item.style.display = "none";
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+/* =========================================================
+   SEARCH RESULT CLICK
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const card =
+            event.target.closest(
+                ".content-card, .article-horizontal, .podcast-card, .video-card, .trending-item"
+            );
+
+        if (!card) {
+            return;
+        }
+
+
+        const searchInput =
+            document.getElementById(
+                "global-search"
+            );
+
+
+        if (
+            !searchInput ||
+            searchInput.value.trim() === ""
+        ) {
+            return;
+        }
+
+
+        /* Save button par click ho
+           to article open nahi hoga */
+
+        if (
+            event.target.closest(".save")
+        ) {
+            return;
+        }
+
+
+        const heading =
+            card.querySelector("h3");
+
+
+        if (!heading) {
+            return;
+        }
+
+
+        const page =
+            card.closest(".page");
+
+
+        if (!page) {
+            return;
+        }
+
+
+        openPage(
+            page.id
+        );
+
+
+        setTimeout(function() {
+
+            card.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+
+            card.style.outline =
+                "3px solid #219653";
+
+            card.style.outlineOffset =
+                "3px";
+
+
+            setTimeout(function() {
+
+                card.style.outline = "";
+
+                card.style.outlineOffset =
+                    "";
+
+            }, 2000);
+
+
+        }, 300);
+
+    }
+);
+
+</script>
+
+<!-- INTERESTS MODAL -->
+
+<div
+    class="interests-modal"
+    id="interests-modal"
+>
+
+    <div class="interests-modal-box">
+
+        <div class="interests-modal-header">
+
+            <div>
+                <h2>
+                    Edit Your Interests
+                </h2>
+
+                <p>
+                    Select topics you want to explore.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                id="close-interests-modal"
+                class="modal-close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="interests-options"
+            id="interests-options"
+        >
+
+            <label class="interest-option">
+                <input
+                    type="checkbox"
+                    value="🏋️ Fitness"
+                >
+                <span>🏋️ Fitness</span>
+            </label>
+
+
+            <label class="interest-option">
+                <input
+                    type="checkbox"
+                    value="🍎 Nutrition"
+                >
+                <span>🍎 Nutrition</span>
+            </label>
+
+
+            <label class="interest-option">
+                <input
+                    type="checkbox"
+                    value="🧠 Mental Health"
+                >
+                <span>🧠 Mental Health</span>
+            </label>
+
+
+            <label class="interest-option">
+                <input
+                    type="checkbox"
+                    value="🪷 Yoga"
+                >
+                <span>🪷 Yoga</span>
+            </label>
+
+
+            <label class="interest-option">
+                <input
+                    type="checkbox"
+                    value="🌿 Wellness"
+                >
+                <span>🌿 Wellness</span>
+            </label>
+
+
+            <label class="interest-option">
+                <input
+                    type="checkbox"
+                    value="🔬 Medical Research"
+                >
+                <span>🔬 Medical Research</span>
+            </label>
+
+        </div>
+
+
+        <div class="interests-modal-actions">
+
+            <button
+                type="button"
+                class="secondary-button"
+                id="cancel-interests"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="primary-button"
+                id="save-interests"
+            >
+                Save Interests
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ARTICLE DETAIL MODAL -->
+
+<div
+    class="article-detail-modal"
+    id="article-detail-modal"
+>
+
+    <div class="article-detail-box">
+
+        <button
+            type="button"
+            class="article-detail-close"
+            id="article-detail-close"
+        >
+            ×
+        </button>
+
+        <img
+            id="article-detail-image"
+            class="article-detail-image"
+            src=""
+            alt=""
+        >
+
+        <div class="article-detail-content">
+
+            <span
+                id="article-detail-category"
+                class="category"
+            ></span>
+
+            <h1 id="article-detail-title"></h1>
+
+            <div
+                id="article-detail-time"
+                class="article-detail-time"
+            ></div>
+
+            <div
+                id="article-detail-body"
+                class="article-detail-body"
+            ></div>
+
+            <button
+                type="button"
+                id="article-detail-save"
+                class="primary-button"
+            >
+                ♡ Save Article
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- HEALTHORA AI CHATBOT -->
+<div id="healthora-ai-widget">
+    <button
+        id="healthora-ai-toggle"
+        type="button"
+        aria-label="Open Healthora AI assistant"
+        aria-expanded="false"
+    >
+        <span class="healthora-ai-toggle-icon">✦</span>
+        <span>Ask Healthora AI</span>
+    </button>
+
+    <section
+        id="healthora-ai-panel"
+        class="healthora-ai-panel"
+        role="dialog"
+        aria-label="Healthora AI Assistant"
+        aria-hidden="true"
+    >
+        <header class="healthora-ai-header">
+            <div class="healthora-ai-brand">
+                <div class="healthora-ai-avatar">✦</div>
+                <div>
+                    <h3>Healthora AI</h3>
+                    <p>Your wellness companion</p>
+                </div>
+            </div>
+
+            <button
+    type="button"
+    id="healthora-ai-new-chat"
+    aria-label="Start a new chat"
+    title="New Chat"
+>
+    + New Chat
+</button>
+
+            <button
+                type="button"
+                id="healthora-ai-close"
+                aria-label="Close chat"
+            >×</button>
+        </header>
+
+        <div
+            id="healthora-ai-messages"
+            class="healthora-ai-messages"
+            aria-live="polite"
+        >
+            <div class="healthora-ai-message assistant">
+                <div class="healthora-ai-bubble">
+ Hi! 👋 I'm Healthora AI. Ask me general question about health, sleep, nutrition, or wellness.
+                </div>
+            </div>
+        </div>
+
+        <div
+            id="healthora-ai-status"
+            class="healthora-ai-status"
+            aria-live="polite"
+        ></div>
+
+        <form id="healthora-ai-form" class="healthora-ai-form">
+            <textarea
+                id="healthora-ai-input"
+                placeholder="Ask a health question..."
+                rows="1"
+                maxlength="4000"
+                aria-label="Your message"
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                id="healthora-ai-send"
+                aria-label="Send message"
+            >
+                ➤
+            </button>
+        </form>
+
+        <p class="healthora-ai-disclaimer">
+            General information only — not a medical diagnosis.
+        </p>
+    </section>
+</div>
+<!-- END HEALTHORA AI CHATBOT -->
+
+
+    <script type="module" src="/script.js"></script>
+
+
+<script type="module" src="/src/dashboardAuth.js"></script>
+
+<script type="module" src="/aiChat.js"></script>
+</body>
+
+</html>
