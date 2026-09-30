@@ -69,19 +69,17 @@ function Login() {
         }
 
         try {
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-await syncUserWithBackend();
+    await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+    );
 
-alert("Login successful!");
+    console.log("✅ Firebase login successful");
 
-window.location.href =
-    "/dashboard.html";
+    window.location.href = "/dashboard.html";
 
-       } catch (error) {
+} catch (error) {
     console.error("FULL FIREBASE ERROR:", error);
     console.log("FIREBASE ERROR CODE:", error.code);
     console.log("FIREBASE ERROR MESSAGE:", error.message);
@@ -98,12 +96,9 @@ window.location.href =
     try {
         const provider = new GoogleAuthProvider();
 
-        await signInWithPopup(
-    auth,
-    provider
-);
+       await signInWithPopup(auth, provider);
 
-await syncUserWithBackend();
+console.log("✅ Google login successful");
 
 window.location.href =
     "/dashboard.html";
@@ -119,21 +114,15 @@ window.location.href =
 const handleGithubLogin = async () => {
     try {
         const provider = new GithubAuthProvider();
-
-      await signInWithPopup(
+await signInWithPopup(
     auth,
     provider
 );
 
-await syncUserWithBackend();
-
-alert(
-    "GitHub login successful!"
-);
+console.log("✅ GitHub login successful");
 
 window.location.href =
     "/dashboard.html";
-
     } catch (error) {
 
         console.error("GitHub Login Error:", error);
