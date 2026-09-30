@@ -14,60 +14,270 @@
 
 </head>
 
+
 <body>
 
-    <div class="article-page">
+    <main class="article-page">
 
+        <!-- Back Button -->
         <button
             class="article-back"
             onclick="history.back()"
         >
-            ← Back
+            ← Back to Articles
         </button>
 
 
-        <div class="article-page-card">
-
-            <img
-                id="article-image"
-                class="article-page-image"
-                src=""
-                alt=""
-            >
+        <!-- Article Card -->
+        <article class="article-page-card">
 
 
+            <!-- Hero Image -->
+            <div class="article-page-image-wrapper">
+
+                <img
+                    id="article-image"
+                    class="article-page-image"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+
+            <!-- Article Content -->
             <div class="article-page-content">
 
+
+                <!-- Category -->
                 <span
                     id="article-category"
                     class="article-page-category"
                 ></span>
 
 
-                <h1 id="article-title"></h1>
+                <!-- Title -->
+                <h1 id="article-title">
+                    Loading article...
+                </h1>
 
 
-                <p
+                <!-- Reading Time -->
+                <div
                     id="article-time"
                     class="article-page-time"
-                ></p>
+                ></div>
 
 
+                <!-- Divider -->
+                <div class="article-divider"></div>
+
+
+                <!-- Main Article -->
                 <div
                     id="article-content"
                     class="article-page-body"
                 ></div>
 
 
+                <!-- Bottom Section -->
+                <div class="article-page-footer">
+
+                    <div class="article-footer-icon">
+                        🌿
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Healthora Wellness
+                        </strong>
+
+                        <p>
+                            Small steps today can lead to
+                            a healthier tomorrow.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
             </div>
 
-        </div>
-
-    </div>
+        </article>
 
 
+        <!-- Related Health Section -->
+        <section class="related-health-section">
+
+            <div class="related-section-heading">
+
+                <span>
+                    KEEP EXPLORING
+                </span>
+
+                <h2>
+                    More Health & Wellness
+                </h2>
+
+                <p>
+                    Explore more practical health information
+                    and wellness guides.
+                </p>
+
+            </div>
+
+
+            <div class="related-health-grid">
+
+                <a
+                    href="article.html?title=10%20Best%20Exercises%20for%20Beginners"
+                    class="related-health-card"
+                >
+
+                    <div class="related-icon">
+                        🏃
+                    </div>
+
+                    <div>
+
+                        <small>
+                            FITNESS
+                        </small>
+
+                        <h3>
+                            10 Best Exercises for Beginners
+                        </h3>
+
+                        <p>
+                            Simple exercises to build strength
+                            and improve daily fitness.
+                        </p>
+
+                    </div>
+
+                    <span class="related-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="article.html?title=How%20to%20Build%20a%20Balanced%20Diet"
+                    class="related-health-card"
+                >
+
+                    <div class="related-icon">
+                        🥗
+                    </div>
+
+                    <div>
+
+                        <small>
+                            NUTRITION
+                        </small>
+
+                        <h3>
+                            How to Build a Balanced Diet
+                        </h3>
+
+                        <p>
+                            Learn how to create healthy and
+                            balanced everyday meals.
+                        </p>
+
+                    </div>
+
+                    <span class="related-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="article.html?title=How%20to%20Manage%20Stress%20Naturally"
+                    class="related-health-card"
+                >
+
+                    <div class="related-icon">
+                        🧘
+                    </div>
+
+                    <div>
+
+                        <small>
+                            MENTAL HEALTH
+                        </small>
+
+                        <h3>
+                            How to Manage Stress Naturally
+                        </h3>
+
+                        <p>
+                            Simple evidence-informed techniques
+                            for everyday stress.
+                        </p>
+
+                    </div>
+
+                    <span class="related-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Bottom CTA -->
+        <section class="article-healthora-cta">
+
+            <div>
+
+                <span>
+                    HEALTHORA
+                </span>
+
+                <h2>
+                    Take Care of Your Health,
+                    One Day at a Time.
+                </h2>
+
+                <p>
+                    Discover practical health information,
+                    build better habits and take control
+                    of your wellness journey.
+                </p>
+
+            </div>
+
+
+            <a
+                href="dashboard.html"
+                class="article-cta-button"
+            >
+                Explore Healthora →
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Article Data -->
     <script src="/articleContent.js"></script>
-    <script type="module" src="articlePage.js"></script>
+
+    <!-- Backend Article Loader -->
+    <script
+        type="module"
+        src="articlePage.js"
+    ></script>
 
 </body>
 

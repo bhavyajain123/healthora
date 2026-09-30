@@ -1,4 +1,5 @@
 
+const API_BASE_URL = "https://healthora.onrender.com";
 import { auth, db } from "./src/firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
 onAuthStateChanged(auth, async function(user) {
@@ -5582,205 +5583,50 @@ document.addEventListener(
     }
 );
 
-document.addEventListener("click", function(event) {
-
-    const article = event.target.closest(".article-horizontal");
-
-    if (!article) {
-        return;
-    }
-
-    const titleElement =
-        article.querySelector("h3");
-
-    if (!titleElement) {
-        return;
-    }
-
-    const title =
-        titleElement.textContent.trim();
-
-    window.location.href =
-        "article.html?title=" +
-        encodeURIComponent(title);
-
-});
-
 /* =========================================================
-   LOAD ARTICLES FROM BACKEND
+   ARTICLE CARD CLICK
 ========================================================= */
 
-const API_BASE_URL =
-   "https://healthora.onrender.com";
+document.addEventListener(
+    "click",
+    function(event) {
 
-async function loadArticlesFromBackend() {
-
-    const articleList =
-        document.querySelector(
-            "#articles .article-list"
-        );
-
-    if (!articleList) {
-        return;
-    }
-
-    try {
-
-        console.log(
-            "Loading articles from backend..."
-        );
-
-        const response =
-            await fetch(
-                `${API_BASE_URL}/api/articles`
+        const clickedCard =
+            event.target.closest(
+                ".article-horizontal"
             );
 
-        if (!response.ok) {
-
-            throw new Error(
-                `HTTP ${response.status}`
-            );
-
-        }
-
-        const result =
-            await response.json();
-
-        console.log(
-            "✅ Articles from backend:",
-            result
-        );
-
-        const articles =
-            result.data || [];
-
-
-        if (articles.length === 0) {
-
-            articleList.innerHTML = `
-                <p style="
-                    padding:20px;
-                    color:#718080;
-                ">
-                    No articles available.
-                </p>
-            `;
-
+        if (!clickedCard) {
             return;
         }
 
 
-        /* Remove old hardcoded cards */
+        const titleElement =
+            clickedCard.querySelector("h3");
 
-        articleList.innerHTML = "";
-
-
-        /* Create cards from MongoDB */
-
-        articles.forEach(function(article) {
-
-            const card =
-                document.createElement("article");
-
-            card.className =
-                "article-horizontal";
+        if (!titleElement) {
+            return;
+        }
 
 
-            card.innerHTML = `
-
-                <img
-                  src="${
-    article.image
-        ? "/" + article.image.replace(/^src\/assets\//, "assets/")
-        : ""
-}"
-                    alt="${article.title}"
-                >
-
-                <div class="article-info">
-
-                    <span class="category">
-                        ${(article.category || "General").toUpperCase()}
-                    </span>
-
-                    <h3>
-                        ${article.title}
-                    </h3>
-
-                    <p>
-                        ${article.description || ""}
-                    </p>
-
-                    <div class="article-meta">
-
-                        <span>
-                            ◷ ${article.readingTime || "5 min read"}
-                        </span>
-
-                        <span>
-                            👁 ${article.views || 0} views
-                        </span>
-
-                    </div>
-
-                </div>
-
-            `;
+        const articleTitle =
+            titleElement.textContent.trim();
 
 
-            
+        if (!articleTitle) {
+            return;
+        }
 
-            card.addEventListener(
-                "click",
-                function() {
 
-                    const title =
-                        article.title;
-
-                    window.location.href =
-                        "article.html?title=" +
-                        encodeURIComponent(
-                            title
-                        );
-
-                }
+        window.location.href =
+            "article.html?title=" +
+            encodeURIComponent(
+                articleTitle
             );
 
-
-            articleList.appendChild(card);
-
-        });
-
-
-        console.log(
-            `✅ ${articles.length} articles rendered`
-        );
-
     }
+);
 
-    catch (error) {
-
-        console.error(
-            "❌ Failed to load articles:",
-            error
-        );
-
-        articleList.innerHTML = `
-            <p style="
-                padding:20px;
-                color:#d32f2f;
-            ">
-                Failed to load articles from backend.
-            </p>
-        `;
-
-    }
-
-}
-
-
-
-loadArticlesFromBackend();
 
 
 /* =========================================================
