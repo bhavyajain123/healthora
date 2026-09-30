@@ -7061,3 +7061,17 @@ select:focus-visible,
     background: var(--light-green);
     border-color: var(--green);
 }
+
+.motivation-button {
+    transition: all 0.2s ease;
+}
+
+.motivation-button:hover {
+    background: #167a43;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(33, 150, 83, 0.2);
+}
+
+.motivation-button:active {
+    transform: translateY(0);
+}

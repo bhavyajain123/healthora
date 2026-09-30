@@ -8252,3 +8252,25 @@ function loadVideos() {
 
 
 loadVideos();
+
+// ==========================================
+// MOTIVATION - KEEP GOING
+// ==========================================
+
+const keepGoingButton =
+    document.getElementById(
+        "motivation-keep-going"
+    );
+
+if (keepGoingButton) {
+
+    keepGoingButton.addEventListener(
+        "click",
+        function() {
+
+            openPage("wellness");
+
+        }
+    );
+
+}
