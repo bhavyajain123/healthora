@@ -6883,3 +6883,35 @@ select:focus-visible,
     }
 
 }
+
+
+/* Smart Insights Refresh Button */
+
+#shi-refresh {
+    min-width: 145px;
+
+    transition:
+        all 0.25s ease;
+}
+
+
+#shi-refresh:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 16px rgba(21, 148, 91, 0.18);
+}
+
+
+#shi-refresh.refreshing {
+    opacity: 0.7;
+
+    cursor: wait;
+
+    transform: scale(0.98);
+}
+
+
+#shi-refresh:disabled {
+    cursor: wait;
+}

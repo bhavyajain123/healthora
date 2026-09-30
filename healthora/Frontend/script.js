@@ -7697,7 +7697,73 @@ loadProfileFromMongoDB();
     );
   }
 
-  elements.refresh.addEventListener("click", renderInsights);
+  console.log("✅ Smart Insights refresh button connected:", elements.refresh);
+
+ elements.refresh.addEventListener("click", async () => {
+
+    // Loading state
+    elements.refresh.disabled = true;
+    elements.refresh.textContent = "Refreshing...";
+
+    elements.refresh.classList.add("refreshing");
+
+    // Small delay so user can actually see the refresh
+    await new Promise(resolve => setTimeout(resolve, 700));
+
+    // Recalculate insights from latest wellness records
+    renderInsights();
+
+    // Show updated state
+    elements.refresh.textContent = "✓ Insights Updated";
+
+    // Add/update last refreshed text
+    let refreshInfo =
+        document.getElementById("shi-last-refresh");
+
+    if (!refreshInfo) {
+
+        refreshInfo =
+            document.createElement("p");
+
+        refreshInfo.id = "shi-last-refresh";
+
+        refreshInfo.style.marginTop = "8px";
+        refreshInfo.style.fontSize = "11px";
+        refreshInfo.style.color = "#71827a";
+
+        const header =
+            document.querySelector("#smartinsights .section-header");
+
+        if (header) {
+            header.appendChild(refreshInfo);
+        }
+    }
+
+    const now = new Date();
+
+    refreshInfo.textContent =
+        "Last updated: " +
+        now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+
+    // Restore button
+    setTimeout(() => {
+
+        elements.refresh.disabled = false;
+
+        elements.refresh.textContent =
+            "Refresh Insights";
+
+        elements.refresh.classList.remove(
+            "refreshing"
+        );
+
+    }, 1500);
+
+});
 
   // Refresh when the Smart Insights page is opened.
   document.querySelectorAll('[data-page="smartinsights"]').forEach((button) => {
