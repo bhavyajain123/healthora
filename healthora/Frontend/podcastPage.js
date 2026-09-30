@@ -257,9 +257,9 @@ async function loadPodcast() {
         // DISPLAY DATA
         // =========================
 
-        image.src =
-            podcast.thumbnail || "";
-
+       image.src = podcast.thumbnail
+    ? "/" + podcast.thumbnail.replace(/^src\/assets\//, "assets/")
+    : "";
         image.alt =
             podcast.title;
 

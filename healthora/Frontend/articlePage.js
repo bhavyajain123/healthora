@@ -90,8 +90,9 @@ async function loadArticle() {
         // DISPLAY ARTICLE
         // =========================
 
-        image.src =
-            article.image || "";
+        image.src = article.image
+    ? "/" + article.image.replace(/^src\/assets\//, "assets/")
+    : "";
 
         image.alt =
             article.title;

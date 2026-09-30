@@ -5689,7 +5689,11 @@ async function loadArticlesFromBackend() {
             card.innerHTML = `
 
                 <img
-                    src="${article.image || ""}"
+                  src="${
+    article.image
+        ? "/" + article.image.replace(/^src\/assets\//, "assets/")
+        : ""
+}"
                     alt="${article.title}"
                 >
 
@@ -5859,7 +5863,11 @@ async function loadPodcastsFromBackend() {
             card.innerHTML = `
 
                 <img
-                    src="${podcast.thumbnail || ""}"
+                   src="${
+    podcast.thumbnail
+        ? "/" + podcast.thumbnail.replace(/^src\/assets\//, "assets/")
+        : ""
+}"
                     alt="${podcast.title}"
                 >
 
@@ -8262,7 +8270,11 @@ function loadVideos() {
             <div class="video-thumbnail">
 
                 <img
-                    src="${video.thumbnail}"
+                   src="${
+    video.thumbnail
+        ? "/" + video.thumbnail.replace(/^src\/assets\//, "assets/")
+        : ""
+}"
                     alt="${video.title}"
                 >
 
