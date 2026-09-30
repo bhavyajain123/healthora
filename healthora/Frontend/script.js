@@ -2079,7 +2079,7 @@ async function loadProfileFromMongoDB() {
 
         const response =
             await fetch(
-                `${window.location.protocol}//${window.location.hostname}:5000/api/users/profile`,
+                `https://healthora.onrender.com/api/users/profile`,
                 {
                     method: "GET",
 
@@ -2198,7 +2198,7 @@ async function updateMongoProfile() {
 
         const response =
             await fetch(
-                `${window.location.protocol}//${window.location.hostname}:5000/api/users/profile`,
+                `https://healthora.onrender.com/api/users/profile`,
                 {
                     method: "PUT",
 
@@ -2351,7 +2351,7 @@ document.addEventListener(
 
             const response =
                 await fetch(
-                    `${window.location.protocol}//${window.location.hostname}:5000/api/users/profile`,
+                    `https://healthora.onrender.com/api/users/profile`,
                     {
                         method: "PUT",
 
@@ -2590,7 +2590,7 @@ document.addEventListener(
 
             const response =
                 await fetch(
-                    `${window.location.protocol}//${window.location.hostname}:5000/api/users/profile`,
+                    `https://healthora.onrender.com/api/users/profile`,
                     {
                         method: "PUT",
 
@@ -5611,7 +5611,7 @@ document.addEventListener("click", function(event) {
 ========================================================= */
 
 const API_BASE_URL =
-    `${window.location.protocol}//${window.location.hostname}:5000`;
+   "https://healthora.onrender.com";
 
 async function loadArticlesFromBackend() {
 

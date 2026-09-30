@@ -8,7 +8,7 @@ const messagesContainer = document.getElementById("healthora-ai-messages");
 const statusElement = document.getElementById("healthora-ai-status");
 const newChatButton = document.getElementById("healthora-ai-new-chat");
 
-const API_URL = "http://localhost:5000/api/ai/chat";
+const API_URL = "https://healthora.onrender.com/api/ai/chat";
 const STORAGE_KEY = "healthora_ai_chats";
 const ACTIVE_CHAT_KEY = "healthora_ai_active_chat";
 

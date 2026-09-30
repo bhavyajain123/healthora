@@ -4,21 +4,27 @@ const { initializeApp, cert, getApps } =
 const { getAuth } =
     require("firebase-admin/auth");
 
-const serviceAccount =
-    require("./serviceAccountKey.json");
+let serviceAccount;
 
+if (process.env.FIREBASE_SERVICE_ACCOUNT_B64) {
+    serviceAccount = JSON.parse(
+        Buffer.from(
+            process.env.FIREBASE_SERVICE_ACCOUNT_B64,
+            "base64"
+        ).toString("utf8")
+    );
+} else {
+    serviceAccount = require("./serviceAccountKey.json");
+}
 
 const firebaseApp =
     getApps().length > 0
         ? getApps()[0]
         : initializeApp({
-            credential: cert(serviceAccount)
-        });
+              credential: cert(serviceAccount)
+          });
 
-
-const auth =
-    getAuth(firebaseApp);
-
+const auth = getAuth(firebaseApp);
 
 module.exports = {
     firebaseApp,

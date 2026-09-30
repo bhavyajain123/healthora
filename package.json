@@ -2,10 +2,11 @@
   "name": "healthora-frontend",
   "private": true,
   "version": "1.0.0",
-  "type": "module","scripts": {
-  "dev": "vite",
-  "build": "vite build healthora/Frontend"
-},
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
   "dependencies": {
     "firebase": "^12.19.0",
     "lucide-react": "^1.48.0",

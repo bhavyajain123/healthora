@@ -30,7 +30,7 @@ function Login() {
 
     const response =
         await fetch(
-            `${window.location.protocol}//${window.location.hostname}:5000/api/users/profile`,
+            "https://healthora.onrender.com/api/users/profile",
             {
                 method: "GET",
 

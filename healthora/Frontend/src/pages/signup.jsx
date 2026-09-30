@@ -60,7 +60,7 @@ const Signup = () => {
       await user.getIdToken();
 
     const API_URL =
-      `${window.location.protocol}//${window.location.hostname}:5000`;
+      "https://healthora.onrender.com";
 
     const response =
       await fetch(
